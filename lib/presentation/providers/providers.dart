@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/local/drift_database.dart' hide Song;
 import '../../data/local/song_dao.dart';
 import '../../data/repositories/song_repository_impl.dart';
-import '../../data/speech/whisper_service.dart';
+import '../../data/speech/composite_recognizer.dart';
 import '../../domain/models/song.dart';
 import '../../domain/repositories/song_repository.dart';
 import '../../domain/repositories/speech_recognizer.dart';
@@ -21,5 +21,5 @@ final songRepositoryProvider = Provider<SongRepository>((ref) {
 final currentSongProvider = StateProvider<Song?>((ref) => null);
 
 final speechRecognizerProvider = Provider<SpeechRecognizer>((ref) {
-  return WhisperService();
+  return CompositeSpeechRecognizer();
 });

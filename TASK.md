@@ -314,3 +314,72 @@ Phase 8: Docs + Release ──────────────────�
 **Этот план утверждается пользователем перед началом Phase 4 (Implementation).**
 
 Если есть правки — вносим в TASK.md и пересогласовываем.
+
+---
+
+## 12. Текущая итерация: Vosk Integration (Phase 3 — Speech Core)
+
+> **Дата:** 2026-05-24
+> **Статус:** Утверждение плана
+> **Цель:** Заменить online speech recognition на offline Vosk streaming
+
+### 12.1 Задача
+
+Интегрировать `vosk_flutter` плагин (alphacep) для offline streaming speech recognition на Android. Текущая реализация через `speech_to_text` требует интернет — это блокер для offline-караоке.
+
+### 12.2 Ограничения
+
+- `vosk_flutter` SDK constraint: `sdk: ">=2.15.1 <3.0.0"` vs наш `sdk: ^3.12.0` → `dependency_override`
+- Android-only streaming (`initSpeechService`). Linux/Windows — batch fallback.
+- Модель ~50MB — bundle в assets.
+- Сохранить `speech_to_text` как fallback при ошибке Vosk.
+
+### 12.3 План (Dependency Graph)
+
+```
+A. SDK fix + dependency setup ─────────────────────────────┐
+   (dependency_override, add vosk_flutter, copy model)      │
+                                                             │
+B. Model loading service ────────────────────────────────────┤
+   (ModelLoader wrapper, extraction, caching)                  │
+                                                             ▼
+C. VoskService implementation ─────────────────────────────┤
+   (SpeechRecognizer interface, initSpeechService, streams)    │
+                                                             ▼
+D. Composite recognizer provider ────────────────────────────┤
+   (try Vosk → fallback Whisper, expose to UI)             │
+                                                             ▼
+E. ProGuard + AndroidManifest ─────────────────────────────┤
+   (rules, permissions)                                      │
+                                                             ▼
+F. Tests ────────────────────────────────────────────────────┤
+   (unit: VoskService mock, widget: PlayerScreen with mock)   │
+                                                             ▼
+G. Documentation ───────────────────────────────────────────┘
+   (README update, TEAM_KNOWLEDGE.md)
+```
+
+**Параллельно:** B || C (независимы, оба используют vosk_flutter API).
+
+### 12.4 Acceptance Criteria
+
+- [ ] `flutter pub get` проходит с `vosk_flutter` + `dependency_override`
+- [ ] VoskService реализует SpeechRecognizer с `transcriptStream`
+- [ ] Android: streaming partial results от микрофона через `initSpeechService`
+- [ ] Linux/Windows: batch fallback через `acceptWaveformBytes`
+- [ ] Модель загружается из assets, распаковывается при первом запуске
+- [ ] При ошибке Vosk → автоматический fallback на speech_to_text + SnackBar
+- [ ] PlayerScreen подсвечивает слова при partial results от Vosk
+- [ ] `flutter test` проходит (unit + widget)
+- [ ] `flutter build apk --debug` проходит
+
+### 12.5 Распределение (Team F)
+
+| Роль | Грейд | Задачи |
+|------|-------|--------|
+| Senior | opus | C (VoskService), D (composite provider), G (docs) |
+| Middle | sonnet | A (SDK fix), B (model loader), E (ProGuard), F (tests) |
+
+### 12.6 Гейт
+
+**Перед implementation:** пользователь утверждает этот план (раздел 12).

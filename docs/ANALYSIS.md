@@ -121,3 +121,55 @@ Phase 5 (Testing) → Phase 6 (Review) → Phase 7 (Docs)
 2. **Затем Этап 2 (архитектура)** — после подтверждения работы аудио.
 3. **Middle может начинать UI-каркас параллельно** с Этапом 0, если Senior подтвердит API Vosk.
 4. **Junior готовит тестовые данные** (5 песен в JSON) параллельно.
+
+---
+
+## 10. Vosk Integration Deep Dive (2026-05-24)
+
+### Current Speech Stack
+- `WhisperService` — uses `speech_to_text` package (online Google Speech, requires internet)
+- `VoskService` — empty stub
+- `SpeechRecognizer` interface: `transcriptStream`, `startListening`, `stopListening`, `dispose`
+
+### Vosk Flutter Plugin
+- Package: `vosk_flutter: ^0.3.48` (alphacep official)
+- Platforms: Android ✔, Linux ✔, Windows ✔, iOS ✖, macOS ✖
+- **Android streaming API:** `initSpeechService(recognizer)` → `onPartial()` / `onResult()` streams
+- **Batch API (all platforms):** `acceptWaveformBytes()` + `getPartialResult()` / `getResult()`
+- **Model loading:** `ModelLoader().loadFromAssets('assets/models/xxx.zip')` — extracts on first run, caches
+
+### SDK Constraint Risk (BLOCKER)
+`vosk_flutter` requires `sdk: ">=2.15.1 <3.0.0"`. Our project uses `sdk: ^3.12.0`.
+Pub may reject this dependency. **Mitigation:** `dependency_override` to force resolution, then test if package works on Dart 3.
+
+### Model Strategy
+- Model: `vosk-model-small-ru-0.22.zip` (~50MB)
+- Approach: Bundle in `assets/models/` (APK +50MB, instant on first run)
+- Alternative: Download on first run (0MB APK, needs progress UI and network)
+- Decision: **Bundle in assets** for simplicity
+
+### Latency Estimate
+| Component | Latency |
+|-----------|---------|
+| Audio capture | 100-300ms |
+| Vosk partial processing | 200-500ms |
+| FuzzyMatcher | 1-5ms |
+| UI update | 16ms |
+| **Total** | **300-800ms** |
+
+Target <1s is achievable.
+
+### Risks (Integration-specific)
+| Risk | Prob | Impact | Mitigation |
+|------|------|--------|------------|
+| SDK constraint mismatch | Medium | Build fail | dependency_override, test Dart 3 compat |
+| initSpeechService crash on some devices | Medium | High | Try-catch + fallback to speech_to_text |
+| JNA/ProGuard in release | Low | High | Add ProGuard rules, test release APK |
+| Model memory on low-end | Low | High | small model already chosen |
+
+### Decision
+**Vosk streaming (Android) wins over Whisper batch:**
+- True streaming partial results (whisper_flutter_new is batch-only)
+- Lower latency (~300-800ms vs 3-5s)
+- Model already available
+- Acceptable trade-off: Android-only streaming (Linux/Windows need manual chunking)

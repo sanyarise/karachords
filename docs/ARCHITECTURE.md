@@ -248,24 +248,34 @@ G          F
 
 ### 5.3 Speech Services
 
-**VoskService:**
-- Инициализация: загрузка модели из assets/models/ или скачивание при первом запуске.
-- Потоковое распознавание: `Stream<String>` через MethodChannel.
-- Буферизация: накапливает частичные результаты, выдаёт финализированные фразы.
+**VoskService (primary, Android streaming):**
+- Model loading: `ModelLoader().loadFromAssets('assets/models/vosk-model-small-ru-0.22.zip')` extracts to app support dir on first run, caches for subsequent runs.
+- Recognizer: `vosk.createRecognizer(modelPath, sampleRate: 16000)`.
+- Streaming (Android): `vosk.initSpeechService(recognizer)` → `speechService.onPartial()` / `onResult()` streams emit transcript text.
+- Batch (Linux/Windows): `recognizer.acceptWaveformBytes(pcm16Chunk)` + `getPartialResult()` for manual chunking.
+- Lifecycle: `start()` → subscribe to streams → emit to `transcriptStream`. `stop()` → dispose speech service. `dispose()` → release recognizer + model.
+- Error handling: any init or runtime error → switch to fallback, notify UI via SnackBar.
 
-**WhisperService (fallback):**
-- Аналогичный интерфейс.
-- Используется, если Vosk не справляется с пением.
+**WhisperService (fallback, online):**
+- Uses `speech_to_text` package (Google Speech API).
+- Activated automatically if `VoskService` fails to initialize or crashes.
+- Same `SpeechRecognizer` interface, transparent to consumers.
+
+**CompositeRecognizer (provider-level):**
+- Tries `VoskService` first on app start.
+- If Vosk init fails → instantiates `WhisperService`.
+- Exposes unified `SpeechRecognizer` interface to UI.
 
 **FuzzyMatcher:**
-- Вход: `recognizedText` (от Vosk), `Song` (текущая песня), `currentPosition` (индекс слова).
-- Выход: `int?` — новый индекс текущего слова (или null, если не удалось сопоставить).
+- Вход: `recognizedText` (от Vosk partials), `Song`, `currentPosition`.
+- Выход: `int?` — новый индекс слова (null = no confident match).
 - Алгоритм:
-  1. Нормализация: lowercase, убрать пунктуацию.
-  2. Поиск в окне: `currentPosition ± windowSize` (например, ±20 слов).
-  3. Fuzzy matching через `String.contains` или `levenshtein` distance.
-  4. Если совпадение найдено — обновить `currentPosition`.
-  5. Если нет — удержать текущую позицию (не дрейфовать).
+  1. Нормализация: lowercase, strip punctuation.
+  2. Flatten song to word list.
+  3. Search in sliding window `currentPosition ± 25` words.
+  4. Levenshtein distance per word, allow up to 2 song skips.
+  5. Confidence threshold `≥0.4`; drift beyond 10 words requires `≥3` matched words.
+  6. No match → return null (keep current position, no drift).
 
 ---
 
@@ -363,19 +373,40 @@ Phase 5: Documentation (README, inline docs)           │
 
 ## 8. API / Интерфейсы
 
-### 8.1 Vosk Flutter Plugin (MethodChannel)
+### 8.1 Vosk Flutter Plugin (Real API)
 
 ```dart
-class VoskFlutterPlugin {
-  static const MethodChannel _channel = MethodChannel('vosk_flutter');
-  
-  Future<void> initModel(String modelPath);
-  Future<void> startListening();
-  Future<void> stopListening();
-  Stream<String> get onResult;
-  Stream<String> get onPartialResult;
-}
+// Plugin instance
+final vosk = VoskFlutterPlugin.instance();
+
+// Model loading (extracts zip from assets to app support dir)
+final modelPath = await ModelLoader().loadFromAssets('assets/models/vosk-model-small-ru-0.22.zip');
+
+// Recognizer
+final recognizer = await vosk.createRecognizer(model: modelPath, sampleRate: 16000);
+
+// Android streaming speech service
+final speechService = await vosk.initSpeechService(recognizer);
+speechService.onPartial().forEach((partial) => print(partial));
+speechService.onResult().forEach((result) => print(result));
+await speechService.start();
+// ... later ...
+await speechService.stop();
+
+// Batch mode (all platforms)
+final chunk = Uint8List.fromList(pcm16Samples);
+final resultReady = await recognizer.acceptWaveformBytes(chunk);
+final partial = await recognizer.getPartialResult();
+final result = await recognizer.getResult();
 ```
+
+**Android Requirements:**
+- `android.permission.RECORD_AUDIO` in `AndroidManifest.xml`
+- ProGuard rule: `-keep class com.sun.jna.* { *; }`
+
+**SDK Constraint Note:**
+`vosk_flutter` declares `sdk: ">=2.15.1 <3.0.0"`. Our project uses `sdk: ^3.12.0`.
+Resolution: use `dependency_override` in `pubspec.yaml` to force compatibility. Test on Dart 3.
 
 ### 8.2 Audio Session (метроном)
 
