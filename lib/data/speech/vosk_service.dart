@@ -20,6 +20,7 @@ class VoskService implements SpeechRecognizer {
   final VoskModelLoader _modelLoader;
 
   VoskFlutterPlugin? _vosk;
+  Model? _model;
   Recognizer? _recognizer;
   SpeechService? _speechService;
 
@@ -94,7 +95,13 @@ class VoskService implements SpeechRecognizer {
     } catch (e) {
       debugPrint('VoskService recognizer.dispose error: $e');
     }
+    try {
+      _model?.dispose();
+    } catch (e) {
+      debugPrint('VoskService model.dispose error: $e');
+    }
     _recognizer = null;
+    _model = null;
     _speechService = null;
     _vosk = null;
   }
@@ -118,8 +125,9 @@ class VoskService implements SpeechRecognizer {
         debugPrint('Vosk model loaded: $modelPath');
       }
 
+      _model = await _vosk!.createModel(modelPath);
       _recognizer = await _vosk!.createRecognizer(
-        model: modelPath,
+        model: _model!,
         sampleRate: 16000,
       );
 
