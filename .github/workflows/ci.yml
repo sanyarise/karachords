@@ -42,6 +42,11 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Download Vosk model
+        run: |
+          mkdir -p assets/models
+          curl -L -o assets/models/vosk-model-small-ru-0.22.zip https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip
+
       - name: Build APK
         run: flutter build apk --release
 
