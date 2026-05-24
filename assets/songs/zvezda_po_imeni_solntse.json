@@ -1,0 +1,67 @@
+{
+  "id": "zvezda_po_imeni_solntse",
+  "title": "Звезда по имени Солнце",
+  "artist": "Кино",
+  "bpm": 95,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {
+          "words": [
+            {"text": "Белый", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "снег,", "chords": []},
+            {"text": "серый", "chords": [{"name": "C", "position": 0}]},
+            {"text": "лед,", "chords": []}
+          ]
+        },
+        {
+          "words": [
+            {"text": "На", "chords": [{"name": "G", "position": 0}]},
+            {"text": "растрескавшейся", "chords": []},
+            {"text": "земле." ,"chords": [{"name": "Dm", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Одежда", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "в", "chords": []},
+            {"text": "дороге,", "chords": []}
+            {"text": "посылка", "chords": [{"name": "C", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Небольшая", "chords": [{"name": "G", "position": 0}]},
+            {"text": "колючая", "chords": []},
+            {"text": "звезда.", "chords": [{"name": "Dm", "position": 0}]}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {
+          "words": [
+            {"text": "Звезда", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "по", "chords": []},
+            {"text": "имени", "chords": [{"name": "C", "position": 0}]},
+            {"text": "Солнце", "chords": []}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Звезда", "chords": [{"name": "G", "position": 0}]},
+            {"text": "по", "chords": []},
+            {"text": "имени", "chords": []},
+            {"text": "Солнце", "chords": [{"name": "Dm", "position": 0}]}
+          ]
+        }
+      ]
+    }
+  ]
+}

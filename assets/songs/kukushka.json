@@ -1,0 +1,74 @@
+{
+  "id": "kukushka",
+  "title": "Кукушка",
+  "artist": "Кино",
+  "bpm": 90,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {
+          "words": [
+            {"text": "Песен", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "еще", "chords": []},
+            {"text": "не", "chords": []},
+            {"text": "написанных", "chords": [{"name": "C", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Сколько?", "chords": [{"name": "G", "position": 0}]},
+            {"text": "Скажи,", "chords": []},
+            {"text": "кукушка,", "chords": [{"name": "F", "position": 0}]},
+            {"text": "пропой.", "chords": []}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Мне", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "жить", "chords": []},
+            {"text": "или", "chords": []},
+            {"text": "не", "chords": []},
+            {"text": "жить", "chords": [{"name": "C", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Мне", "chords": [{"name": "G", "position": 0}]},
+            {"text": "судьбу", "chords": []},
+            {"text": "мою", "chords": []},
+            {"text": "в", "chords": [{"name": "F", "position": 0}]},
+            {"text": "голове", "chords": []}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {
+          "words": [
+            {"text": "Мой", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "ладонь", "chords": []},
+            {"text": "переросла", "chords": [{"name": "C", "position": 0}]},
+            {"text": "в", "chords": []},
+            {"text": "кулак", "chords": [{"name": "G", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Если", "chords": [{"name": "F", "position": 0}]},
+            {"text": "есть", "chords": []},
+            {"text": "порох", "chords": []},
+            {"text": "—", "chords": []},
+            {"text": "дай", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "огня", "chords": []}
+          ]
+        }
+      ]
+    }
+  ]
+}

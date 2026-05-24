@@ -1,0 +1,93 @@
+{
+  "id": "gruppa_krovi",
+  "title": "Группа крови",
+  "artist": "Кино",
+  "bpm": 110,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {
+          "words": [
+            {"text": "Теплое", "chords": [{"name": "Em", "position": 0}]},
+            {"text": "место,", "chords": []},
+            {"text": "но", "chords": []},
+            {"text": "улицы", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "ждут", "chords": []}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Отпечатков", "chords": [{"name": "C", "position": 0}]},
+            {"text": "наших", "chords": []},
+            {"text": "ног.", "chords": [{"name": "G", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Звездная", "chords": [{"name": "Em", "position": 0}]},
+            {"text": "пыль", "chords": []},
+            {"text": "—", "chords": []},
+            {"text": "на", "chords": []},
+            {"text": "сапогах.", "chords": [{"name": "Am", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Мягкое", "chords": [{"name": "C", "position": 0}]},
+            {"text": "кресло,", "chords": []},
+            {"text": "клетчатый", "chords": [{"name": "G", "position": 0}]},
+            {"text": "плед", "chords": []}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {
+          "words": [
+            {"text": "Группа", "chords": [{"name": "Em", "position": 0}]},
+            {"text": "крови", "chords": []},
+            {"text": "—", "chords": []},
+            {"text": "на", "chords": []},
+            {"text": "рукаве,", "chords": [{"name": "Am", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Мой", "chords": [{"name": "C", "position": 0}]},
+            {"text": "порядковый", "chords": []},
+            {"text": "номер", "chords": []},
+            {"text": "—", "chords": []},
+            {"text": "на", "chords": [{"name": "G", "position": 0}]},
+            {"text": "рукаве,", "chords": []}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Пожелай", "chords": [{"name": "Em", "position": 0}]},
+            {"text": "мне", "chords": []},
+            {"text": "удачи", "chords": [{"name": "Am", "position": 0}]},
+            {"text": "в", "chords": []},
+            {"text": "бою,", "chords": [{"name": "C", "position": 0}]}
+          ]
+        },
+        {
+          "words": [
+            {"text": "Пожелай", "chords": [{"name": "G", "position": 0}]},
+            {"text": "мне", "chords": []},
+            {"text": "не", "chords": []},
+            {"text": "остаться", "chords": [{"name": "Em", "position": 0}]},
+            {"text": "в", "chords": []},
+            {"text": "этой", "chords": []},
+            {"text": "траве.", "chords": [{"name": "Am", "position": 0}]}
+          ]
+        }
+      ]
+    }
+  ]
+}
