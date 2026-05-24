@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../data/speech/composite_recognizer.dart';
 import '../../data/speech/fuzzy_matcher.dart';
 import '../../domain/models/song.dart';
 import '../providers/player_provider.dart';
@@ -81,6 +82,15 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
 
     final recognizer = ref.read(speechRecognizerProvider);
     await recognizer.startListening();
+
+    if (recognizer is CompositeSpeechRecognizer && recognizer.isUsingFallback && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Распознавание офлайн недоступно. Используется онлайн-режим (требуется интернет).'),
+          duration: Duration(seconds: 4),
+        ),
+      );
+    }
 
     _transcriptSub?.cancel();
     _transcriptSub = recognizer.transcriptStream.listen(
