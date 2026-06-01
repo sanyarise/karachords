@@ -186,6 +186,13 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         .length;
 
     if (!transcript.isFinal) {
+      // Require at least 2 accumulated words before advancing. This prevents
+      // the first partial word after a final result (or after restart) from
+      // falsely triggering a line advance.
+      if (recognizedWords < 2) {
+        _log.w('[PlayerScreen] _onTranscript: skipping partial with < 2 words');
+        return;
+      }
       final advance = (recognizedWords - _lastPartialWordCount).clamp(0, maxLineAdvance);
       _lastPartialWordCount = recognizedWords;
       if (advance > 0) {
@@ -213,15 +220,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       return;
     }
 
-    // Final fallback: advance by 1 line.
-    final nextLine = (currentLinePos + 1).clamp(0, flatLines.length - 1);
-    if (nextLine != currentLinePos) {
-      HapticFeedback.lightImpact();
-      ref.read(currentPositionProvider.notifier).state = nextLine;
-      _log.i('[PlayerScreen] _onTranscript: advance to line $nextLine (fallback final)');
-      return;
-    }
-
+    // No fallback advance — blind forward movement creates more problems
+    // than it solves (e.g. noise advancing the cursor erroneously).
     _log.w('[PlayerScreen] _onTranscript: no position change');
   }
 

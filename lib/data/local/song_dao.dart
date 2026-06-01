@@ -53,6 +53,10 @@ class SongDao {
   }
 
   Future<List<domain.Song>> importBuiltInSongs() async {
+    // Delete all existing built-in songs so old ones don't persist after update.
+    await (_db.delete(_db.songs)
+      ..where((s) => s.isBuiltIn.equals(true))).go();
+
     final songs = <domain.Song>[];
     for (final asset in _builtInSongAssets) {
       try {

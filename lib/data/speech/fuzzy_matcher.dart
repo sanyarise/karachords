@@ -18,27 +18,29 @@ class FuzzyMatcher {
   static const int _maxSongSkip = 2;
 
   static const int _defaultLineWindowSize = 10;
-  static const int _defaultLineMaxDistance = 5;
+  static const double _defaultLineMinConfidence = 0.3;
+  static const int _perWordMaxDistance = 2;
   static const int _lineDriftThreshold = 5;
   static const int _lineDriftMinMatchedWords = 2;
 
   /// Finds the target line in [song] for the given [recognizedText].
   ///
   /// Returns the line index in the flattened line list, or `null` when no
-  /// confident match is found. Uses line-level matching which is more
-  /// forgiving than word-level — it needs only a few words from the
-  /// recognized text to match a line.
+  /// confident match is found. Uses word-level matching: splits the
+  /// recognized text into words and checks how many appear (within
+  /// Levenshtein distance) in each candidate line. This avoids the
+  /// character-level Levenshtein pitfall where a short query against a
+  /// long line always yields low confidence.
   int? findLinePosition(
     String recognizedText,
     Song song,
     int currentLinePosition, {
     int windowSize = _defaultLineWindowSize,
-    int maxDistance = _defaultLineMaxDistance,
-    double minConfidence = _defaultMinConfidence,
+    double minConfidence = _defaultLineMinConfidence,
   }) {
-    final queryText = normalize(recognizedText);
-    _log?.i('[FuzzyMatcher] findLinePosition query="$queryText", currentLine=$currentLinePosition');
-    if (queryText.isEmpty) {
+    final queryWords = _wordsFromText(recognizedText);
+    _log?.i('[FuzzyMatcher] findLinePosition queryWords=$queryWords, currentLine=$currentLinePosition');
+    if (queryWords.isEmpty) {
       _log?.w('[FuzzyMatcher] findLinePosition: empty query');
       return null;
     }
@@ -50,13 +52,12 @@ class FuzzyMatcher {
       return null;
     }
 
-    // Build normalized line texts.
-    final lineTexts = flatLines.map((entry) {
-      final words = entry.line.words
+    // Build word lists for each line (already normalized per-word).
+    final lineWordLists = flatLines.map((entry) {
+      return entry.line.words
           .map((w) => normalize(w.text))
           .where((w) => w.isNotEmpty)
-          .join(' ');
-      return words;
+          .toList();
     }).toList();
 
     final clampedCurrent = currentLinePosition.clamp(0, flatLines.length - 1);
@@ -71,25 +72,32 @@ class FuzzyMatcher {
     _log?.i('[FuzzyMatcher] findLinePosition: line window $windowStart..$windowEnd');
 
     int bestLine = -1;
-    int bestDistance = maxDistance + 1;
+    double bestScore = 0.0;
 
     for (int i = windowStart; i < windowEnd; i++) {
-      final lineText = lineTexts[i];
-      if (lineText.isEmpty) continue;
-      final distance = levenshtein(queryText, lineText);
-      final maxLen = queryText.length > lineText.length
-          ? queryText.length
-          : lineText.length;
-      final confidence = maxLen == 0 ? 0.0 : 1.0 - (distance / maxLen);
-      _log?.i('[FuzzyMatcher] findLinePosition: line $i dist=$distance conf=${confidence.toStringAsFixed(2)} "$lineText"');
-      if (distance <= bestDistance && confidence >= minConfidence) {
-        bestDistance = distance;
+      final lineWords = lineWordLists[i];
+      if (lineWords.isEmpty) continue;
+
+      int matched = 0;
+      for (final qw in queryWords) {
+        for (final lw in lineWords) {
+          if (levenshtein(qw, lw) <= _perWordMaxDistance) {
+            matched++;
+            break; // count each query word at most once per line
+          }
+        }
+      }
+
+      final score = matched / queryWords.length;
+      _log?.i('[FuzzyMatcher] findLinePosition: line $i matched=$matched/${queryWords.length} score=${score.toStringAsFixed(2)} words=$lineWords');
+      if (score > bestScore) {
+        bestScore = score;
         bestLine = i;
       }
     }
 
-    if (bestLine < 0) {
-      _log?.w('[FuzzyMatcher] findLinePosition: no match in window');
+    if (bestScore < minConfidence) {
+      _log?.w('[FuzzyMatcher] findLinePosition: best score ${bestScore.toStringAsFixed(2)} < $minConfidence');
       return null;
     }
 
@@ -100,15 +108,14 @@ class FuzzyMatcher {
     }
 
     // If the match is far ahead, require stronger evidence.
-    final matchedWords = queryText.split(RegExp(r'\s+')).length;
     if (bestLine > clampedCurrent + _lineDriftThreshold) {
-      if (matchedWords < _lineDriftMinMatchedWords) {
-        _log?.w('[FuzzyMatcher] findLinePosition: drift rejected matchedWords=$matchedWords < $_lineDriftMinMatchedWords');
+      if (queryWords.length < _lineDriftMinMatchedWords) {
+        _log?.w('[FuzzyMatcher] findLinePosition: drift rejected queryWords=${queryWords.length} < $_lineDriftMinMatchedWords');
         return null;
       }
     }
 
-    _log?.i('[FuzzyMatcher] findLinePosition: returning line $bestLine');
+    _log?.i('[FuzzyMatcher] findLinePosition: returning line $bestLine score=${bestScore.toStringAsFixed(2)}');
     return bestLine;
   }
 
