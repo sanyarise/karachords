@@ -31,10 +31,8 @@ class SongListNotifier extends StateNotifier<SongListState> {
       searchQuery: state.searchQuery,
     );
     try {
+      await _repository.importBuiltInSongs();
       var songs = await _repository.getAllSongs();
-      if (songs.isEmpty) {
-        songs = await _repository.importBuiltInSongs();
-      }
       state = SongListState(
         allSongs: songs,
         filteredSongs: songs,
