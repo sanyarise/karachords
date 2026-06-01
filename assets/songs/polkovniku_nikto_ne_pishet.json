@@ -1,0 +1,49 @@
+{
+  "id": "polkovniku_nikto_ne_pishet",
+  "title": "Полковнику никто не пишет",
+  "artist": "Би-2",
+  "bpm": 130,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "Большие", "chords": [{"name": "Am", "position": 0}]}, {"text": "города,", "chords": [{"name": "Em", "position": 0}]}]},
+        {"words": [{"text": "Пустые", "chords": [{"name": "C", "position": 0}]}, {"text": "поезда,", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Ни", "chords": [{"name": "Dm", "position": 0}]}, {"text": "берега,", "chords": []}, {"text": "ни", "chords": []}, {"text": "дна.", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Всё", "chords": [{"name": "F", "position": 0}]}, {"text": "начинать", "chords": []}, {"text": "сначала.", "chords": [{"name": "E", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "Холодная", "chords": [{"name": "Am", "position": 0}]}, {"text": "война,", "chords": [{"name": "Em", "position": 0}]}]},
+        {"words": [{"text": "И", "chords": []}, {"text": "время,", "chords": [{"name": "C", "position": 0}]}, {"text": "как", "chords": []}, {"text": "вода.", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Он", "chords": [{"name": "Dm", "position": 0}]}, {"text": "не", "chords": []}, {"text": "сошёл", "chords": []}, {"text": "с", "chords": []}, {"text": "ума.", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Ты", "chords": [{"name": "F", "position": 0}]}, {"text": "ничего", "chords": []}, {"text": "не", "chords": []}, {"text": "знала.", "chords": [{"name": "E", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Полковнику", "chords": [{"name": "Am", "position": 0}]}, {"text": "никто", "chords": []}, {"text": "не", "chords": [{"name": "C", "position": 0}]}, {"text": "пишет,", "chords": []}]},
+        {"words": [{"text": "Полковника", "chords": [{"name": "G", "position": 0}]}, {"text": "никто", "chords": []}, {"text": "не", "chords": [{"name": "Dm", "position": 0}]}, {"text": "ждёт.", "chords": []}]},
+        {"words": [{"text": "На", "chords": []}, {"text": "линии", "chords": [{"name": "Am", "position": 0}]}, {"text": "огня", "chords": [{"name": "C", "position": 0}]}, {"text": "пустые", "chords": []}, {"text": "города,", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "которых", "chords": [{"name": "Dm", "position": 0}]}, {"text": "никого", "chords": []}, {"text": "не", "chords": []}, {"text": "ждёшь.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев 2",
+      "lines": [
+        {"words": [{"text": "Полковнику", "chords": [{"name": "Am", "position": 0}]}, {"text": "никто", "chords": []}, {"text": "не", "chords": [{"name": "C", "position": 0}]}, {"text": "пишет,", "chords": []}]},
+        {"words": [{"text": "Полковника", "chords": [{"name": "G", "position": 0}]}, {"text": "никто", "chords": []}, {"text": "не", "chords": [{"name": "Dm", "position": 0}]}, {"text": "ждёт.", "chords": []}]},
+        {"words": [{"text": "На", "chords": []}, {"text": "линии", "chords": [{"name": "Am", "position": 0}]}, {"text": "огня", "chords": [{"name": "C", "position": 0}]}, {"text": "печальные", "chords": []}, {"text": "глаза,", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "которых", "chords": [{"name": "Dm", "position": 0}]}, {"text": "никого", "chords": []}, {"text": "не", "chords": []}, {"text": "ждёшь.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    }
+  ]
+}

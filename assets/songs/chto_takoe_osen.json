@@ -1,0 +1,49 @@
+{
+  "id": "chto_takoe_osen",
+  "title": "Что такое осень",
+  "artist": "ДДТ",
+  "bpm": 95,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "Что", "chords": [{"name": "Am", "position": 0}]}, {"text": "такое", "chords": []}, {"text": "осень?", "chords": [{"name": "Dm", "position": 0}]}, {"text": "Это", "chords": [{"name": "E", "position": 0}]}, {"text": "небо,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Плачущее", "chords": [{"name": "Dm", "position": 0}]}, {"text": "небо", "chords": []}, {"text": "под", "chords": [{"name": "G", "position": 0}]}, {"text": "ногами.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "лужах", "chords": [{"name": "Dm", "position": 0}]}, {"text": "разлетаются", "chords": [{"name": "E", "position": 0}]}, {"text": "птицы", "chords": [{"name": "Am", "position": 0}]}, {"text": "с", "chords": []}, {"text": "облаками,", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Осень,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "я", "chords": []}, {"text": "давно", "chords": [{"name": "E", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобою", "chords": []}, {"text": "не", "chords": []}, {"text": "был.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Осень,", "chords": [{"name": "Am", "position": 0}]}, {"text": "в", "chords": []}, {"text": "небе", "chords": [{"name": "Dm", "position": 0}]}, {"text": "жгут", "chords": []}, {"text": "корабли.", "chords": [{"name": "E", "position": 0}]}]},
+        {"words": [{"text": "Осень,", "chords": [{"name": "Am", "position": 0}]}, {"text": "мне", "chords": []}, {"text": "бы", "chords": [{"name": "Dm", "position": 0}]}, {"text": "прочь", "chords": []}, {"text": "от", "chords": []}, {"text": "земли.", "chords": [{"name": "E", "position": 0}]}]},
+        {"words": [{"text": "Там,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "где", "chords": []}, {"text": "в", "chords": []}, {"text": "море", "chords": [{"name": "G", "position": 0}]}, {"text": "тает", "chords": []}, {"text": "печаль,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Осень,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "тёмная", "chords": []}, {"text": "даль.", "chords": [{"name": "E", "position": 0}]}, {"text": "Осень,", "chords": [{"name": "Am", "position": 0}]}, {"text": "тёмная", "chords": []}, {"text": "даль.", "chords": [{"name": "Dm", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "Что", "chords": [{"name": "Am", "position": 0}]}, {"text": "такое", "chords": []}, {"text": "осень?", "chords": [{"name": "Dm", "position": 0}]}, {"text": "Это", "chords": [{"name": "E", "position": 0}]}, {"text": "камни,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Верность", "chords": [{"name": "Dm", "position": 0}]}, {"text": "над", "chords": []}, {"text": "чернеющей", "chords": [{"name": "G", "position": 0}]}, {"text": "Невою.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Осень", "chords": [{"name": "Dm", "position": 0}]}, {"text": "вновь", "chords": []}, {"text": "напомнила", "chords": [{"name": "E", "position": 0}]}, {"text": "душе", "chords": []}, {"text": "о", "chords": [{"name": "Am", "position": 0}]}, {"text": "самом", "chords": []}, {"text": "главном,", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Осень,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "я", "chords": []}, {"text": "опять", "chords": [{"name": "E", "position": 0}]}, {"text": "лишён", "chords": []}, {"text": "покоя.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Осень,", "chords": [{"name": "Am", "position": 0}]}, {"text": "в", "chords": []}, {"text": "небе", "chords": [{"name": "Dm", "position": 0}]}, {"text": "жгут", "chords": []}, {"text": "корабли.", "chords": [{"name": "E", "position": 0}]}]},
+        {"words": [{"text": "Осень,", "chords": [{"name": "Am", "position": 0}]}, {"text": "мне", "chords": []}, {"text": "бы", "chords": [{"name": "Dm", "position": 0}]}, {"text": "прочь", "chords": []}, {"text": "от", "chords": []}, {"text": "земли.", "chords": [{"name": "E", "position": 0}]}]},
+        {"words": [{"text": "Там,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "где", "chords": []}, {"text": "в", "chords": []}, {"text": "море", "chords": [{"name": "G", "position": 0}]}, {"text": "тает", "chords": []}, {"text": "печаль,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Осень,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "тёмная", "chords": []}, {"text": "даль.", "chords": [{"name": "E", "position": 0}]}, {"text": "Осень,", "chords": [{"name": "Am", "position": 0}]}, {"text": "тёмная", "chords": []}, {"text": "даль.", "chords": [{"name": "Dm", "position": 0}]}]}
+      ]
+    }
+  ]
+}

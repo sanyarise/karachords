@@ -1,0 +1,57 @@
+{
+  "id": "pachka_sigaret",
+  "title": "Пачка сигарет",
+  "artist": "Кино",
+  "bpm": 105,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "Я", "chords": [{"name": "Am", "position": 0}]}, {"text": "сижу", "chords": []}, {"text": "и", "chords": [{"name": "Em", "position": 0}]}, {"text": "смотрю", "chords": []}, {"text": "в", "chords": []}, {"text": "чужое", "chords": [{"name": "Am", "position": 0}]}, {"text": "небо", "chords": []}]},
+        {"words": [{"text": "Из", "chords": []}, {"text": "чужого", "chords": [{"name": "Em", "position": 0}]}, {"text": "окна.", "chords": []}]},
+        {"words": [{"text": "И", "chords": []}, {"text": "не", "chords": [{"name": "Am", "position": 0}]}, {"text": "вижу", "chords": []}, {"text": "ни", "chords": [{"name": "Em", "position": 0}]}, {"text": "одной", "chords": []}, {"text": "знакомой", "chords": [{"name": "Am", "position": 0}]}, {"text": "звезды.", "chords": []}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "ходил", "chords": [{"name": "Em", "position": 0}]}, {"text": "по", "chords": []}, {"text": "всем", "chords": []}, {"text": "дорогам", "chords": [{"name": "Dm", "position": 0}]}, {"text": "и", "chords": []}, {"text": "туда,", "chords": [{"name": "E", "position": 0}]}]},
+        {"words": [{"text": "И", "chords": [{"name": "Am", "position": 0}]}, {"text": "сюда,", "chords": [{"name": "Em", "position": 0}]}]},
+        {"words": [{"text": "Обернулся", "chords": [{"name": "Am", "position": 0}]}, {"text": "и", "chords": []}, {"text": "не", "chords": [{"name": "Em", "position": 0}]}, {"text": "смог", "chords": []}, {"text": "увидеть", "chords": [{"name": "Am", "position": 0}]}, {"text": "следы.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Но", "chords": []}, {"text": "если", "chords": [{"name": "Dm", "position": 0}]}, {"text": "есть", "chords": []}, {"text": "в", "chords": []}, {"text": "кармане", "chords": [{"name": "G", "position": 0}]}, {"text": "пачка", "chords": []}, {"text": "сигарет,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Значит,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "всё", "chords": []}, {"text": "не", "chords": []}, {"text": "так", "chords": []}, {"text": "уж", "chords": [{"name": "Am", "position": 0}]}, {"text": "плохо", "chords": []}, {"text": "на", "chords": []}, {"text": "сегодняшний", "chords": [{"name": "E", "position": 0}]}, {"text": "день.", "chords": []}]},
+        {"words": [{"text": "И", "chords": []}, {"text": "билет", "chords": [{"name": "Dm", "position": 0}]}, {"text": "на", "chords": []}, {"text": "самолёт", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "серебристым", "chords": [{"name": "C", "position": 0}]}, {"text": "крылом,", "chords": []}]},
+        {"words": [{"text": "Что,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "взлетая,", "chords": []}, {"text": "оставляет", "chords": [{"name": "Am", "position": 0}]}, {"text": "земле", "chords": []}, {"text": "лишь", "chords": [{"name": "E", "position": 0}]}, {"text": "тень.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "И", "chords": []}, {"text": "кто-то", "chords": [{"name": "Am", "position": 0}]}, {"text": "видит", "chords": []}, {"text": "в", "chords": [{"name": "Em", "position": 0}]}, {"text": "этом", "chords": []}, {"text": "лишь", "chords": [{"name": "Am", "position": 0}]}, {"text": "грех,", "chords": []}]},
+        {"words": [{"text": "А", "chords": []}, {"text": "кто-то", "chords": [{"name": "Em", "position": 0}]}, {"text": "спросит:", "chords": []}, {"text": "почему?", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "люблю", "chords": [{"name": "Em", "position": 0}]}, {"text": "эти", "chords": []}, {"text": "земли,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "по", "chords": []}, {"text": "которым", "chords": [{"name": "E", "position": 0}]}, {"text": "не", "chords": []}, {"text": "шёл", "chords": []}, {"text": "никто.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Но", "chords": []}, {"text": "если", "chords": [{"name": "Dm", "position": 0}]}, {"text": "есть", "chords": []}, {"text": "в", "chords": []}, {"text": "кармане", "chords": [{"name": "G", "position": 0}]}, {"text": "пачка", "chords": []}, {"text": "сигарет,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Значит,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "всё", "chords": []}, {"text": "не", "chords": []}, {"text": "так", "chords": []}, {"text": "уж", "chords": [{"name": "Am", "position": 0}]}, {"text": "плохо", "chords": []}, {"text": "на", "chords": []}, {"text": "сегодняшний", "chords": [{"name": "E", "position": 0}]}, {"text": "день.", "chords": []}]},
+        {"words": [{"text": "И", "chords": []}, {"text": "билет", "chords": [{"name": "Dm", "position": 0}]}, {"text": "на", "chords": []}, {"text": "самолёт", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "серебристым", "chords": [{"name": "C", "position": 0}]}, {"text": "крылом,", "chords": []}]},
+        {"words": [{"text": "Что,", "chords": [{"name": "Dm", "position": 0}]}, {"text": "взлетая,", "chords": []}, {"text": "оставляет", "chords": [{"name": "Am", "position": 0}]}, {"text": "земле", "chords": []}, {"text": "лишь", "chords": [{"name": "E", "position": 0}]}, {"text": "тень.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "outro",
+      "label": "Окончание",
+      "lines": [
+        {"words": [{"text": "Am", "chords": []}, {"text": "Em", "chords": []}, {"text": "Am", "chords": []}]}
+      ]
+    }
+  ]
+}

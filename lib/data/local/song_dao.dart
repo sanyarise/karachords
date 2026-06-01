@@ -7,11 +7,16 @@ import '../../domain/models/song.dart' as domain;
 import 'drift_database.dart';
 
 const List<String> _builtInSongAssets = [
-  'assets/songs/kukushka.json',
-  'assets/songs/alye_parusa.json',
   'assets/songs/zvezda_po_imeni_solntse.json',
   'assets/songs/gruppa_krovi.json',
-  'assets/songs/pesnya_o_vetre.json',
+  'assets/songs/pachka_sigaret.json',
+  'assets/songs/kukushka.json',
+  'assets/songs/chto_takoe_osen.json',
+  'assets/songs/ya_hochu_byt_s_toboy.json',
+  'assets/songs/polkovniku_nikto_ne_pishet.json',
+  'assets/songs/vyhoda_net.json',
+  'assets/songs/kak_na_voyne.json',
+  'assets/songs/poteryanniy_ray.json',
 ];
 
 class SongDao {

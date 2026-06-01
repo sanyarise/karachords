@@ -1,0 +1,46 @@
+{
+  "id": "kak_na_voyne",
+  "title": "Как на войне",
+  "artist": "Агата Кристи",
+  "bpm": 120,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "Я", "chords": [{"name": "Em", "position": 0}]}, {"text": "живу", "chords": []}, {"text": "на", "chords": [{"name": "C", "position": 0}]}, {"text": "улице,", "chords": []}, {"text": "где", "chords": [{"name": "Am", "position": 0}]}, {"text": "не", "chords": []}, {"text": "растут", "chords": [{"name": "D", "position": 0}]}, {"text": "цветы.", "chords": []}]},
+        {"words": [{"text": "Я", "chords": [{"name": "Em", "position": 0}]}, {"text": "живу", "chords": []}, {"text": "в", "chords": [{"name": "C", "position": 0}]}, {"text": "городе,", "chords": []}, {"text": "где", "chords": [{"name": "Am", "position": 0}]}, {"text": "нет", "chords": []}, {"text": "одной", "chords": [{"name": "D", "position": 0}]}, {"text": "мечты.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "А", "chords": []}, {"text": "на", "chords": [{"name": "Em", "position": 0}]}, {"text": "войне", "chords": []}, {"text": "как", "chords": [{"name": "C", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне.", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "А", "chords": []}, {"text": "на", "chords": [{"name": "D", "position": 0}]}, {"text": "войне", "chords": []}, {"text": "как", "chords": [{"name": "Em", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "А", "chords": []}, {"text": "на", "chords": [{"name": "Am", "position": 0}]}, {"text": "войне", "chords": []}, {"text": "как", "chords": [{"name": "D", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне,", "chords": [{"name": "Em", "position": 0}]}]},
+        {"words": [{"text": "А", "chords": [{"name": "C", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне,", "chords": [{"name": "Am", "position": 0}]}, {"text": "а", "chords": []}, {"text": "на", "chords": [{"name": "D", "position": 0}]}, {"text": "войне.", "chords": [{"name": "Em", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "Пальцы", "chords": [{"name": "Em", "position": 0}]}, {"text": "в", "chords": []}, {"text": "крови,", "chords": [{"name": "C", "position": 0}]}, {"text": "иглы", "chords": [{"name": "Am", "position": 0}]}, {"text": "в", "chords": []}, {"text": "руках.", "chords": [{"name": "D", "position": 0}]}]},
+        {"words": [{"text": "Как", "chords": [{"name": "Em", "position": 0}]}, {"text": "надоели", "chords": []}, {"text": "эти", "chords": [{"name": "C", "position": 0}]}, {"text": "вены", "chords": [{"name": "Am", "position": 0}]}, {"text": "на", "chords": []}, {"text": "руках.", "chords": [{"name": "D", "position": 0}]}]},
+        {"words": [{"text": "Пальцы", "chords": [{"name": "Em", "position": 0}]}, {"text": "в", "chords": []}, {"text": "крови,", "chords": [{"name": "C", "position": 0}]}, {"text": "но", "chords": [{"name": "Am", "position": 0}]}, {"text": "я", "chords": []}, {"text": "живой.", "chords": [{"name": "D", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "А", "chords": []}, {"text": "на", "chords": [{"name": "Em", "position": 0}]}, {"text": "войне", "chords": []}, {"text": "как", "chords": [{"name": "C", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне.", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "А", "chords": []}, {"text": "на", "chords": [{"name": "D", "position": 0}]}, {"text": "войне", "chords": []}, {"text": "как", "chords": [{"name": "Em", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "А", "chords": []}, {"text": "на", "chords": [{"name": "Am", "position": 0}]}, {"text": "войне", "chords": []}, {"text": "как", "chords": [{"name": "D", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне,", "chords": [{"name": "Em", "position": 0}]}]},
+        {"words": [{"text": "А", "chords": [{"name": "C", "position": 0}]}, {"text": "на", "chords": []}, {"text": "войне,", "chords": [{"name": "Am", "position": 0}]}, {"text": "а", "chords": []}, {"text": "на", "chords": [{"name": "D", "position": 0}]}, {"text": "войне.", "chords": [{"name": "Em", "position": 0}]}]}
+      ]
+    }
+  ]
+}

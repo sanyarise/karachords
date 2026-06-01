@@ -2,72 +2,48 @@
   "id": "kukushka",
   "title": "Кукушка",
   "artist": "Кино",
-  "bpm": 90,
+  "bpm": 115,
   "isBuiltIn": true,
   "sections": [
     {
       "type": "verse",
       "label": "Куплет 1",
       "lines": [
-        {
-          "words": [
-            {"text": "Песен", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "еще", "chords": []},
-            {"text": "не", "chords": []},
-            {"text": "написанных", "chords": [{"name": "C", "position": 0}]}
-          ]
-        },
-        {
-          "words": [
-            {"text": "Сколько?", "chords": [{"name": "G", "position": 0}]},
-            {"text": "Скажи,", "chords": []},
-            {"text": "кукушка,", "chords": [{"name": "F", "position": 0}]},
-            {"text": "пропой.", "chords": []}
-          ]
-        },
-        {
-          "words": [
-            {"text": "Мне", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "жить", "chords": []},
-            {"text": "или", "chords": []},
-            {"text": "не", "chords": []},
-            {"text": "жить", "chords": [{"name": "C", "position": 0}]}
-          ]
-        },
-        {
-          "words": [
-            {"text": "Мне", "chords": [{"name": "G", "position": 0}]},
-            {"text": "судьбу", "chords": []},
-            {"text": "мою", "chords": []},
-            {"text": "в", "chords": [{"name": "F", "position": 0}]},
-            {"text": "голове", "chords": []}
-          ]
-        }
+        {"words": [{"text": "Песен", "chords": [{"name": "Em", "position": 0}]}, {"text": "ещё", "chords": []}, {"text": "не", "chords": [{"name": "C", "position": 0}]}, {"text": "написанных", "chords": []}, {"text": "сколько?", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Скажи,", "chords": [{"name": "D", "position": 0}]}, {"text": "кукушка,", "chords": [{"name": "Em", "position": 0}]}, {"text": "пропой.", "chords": []}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "городе", "chords": [{"name": "Em", "position": 0}]}, {"text": "мне", "chords": []}, {"text": "жить", "chords": [{"name": "C", "position": 0}]}, {"text": "или", "chords": []}, {"text": "на", "chords": [{"name": "G", "position": 0}]}, {"text": "выездах?", "chords": []}]},
+        {"words": [{"text": "Камнем", "chords": [{"name": "D", "position": 0}]}, {"text": "лежать", "chords": []}, {"text": "или", "chords": [{"name": "Em", "position": 0}]}, {"text": "гореть", "chords": []}, {"text": "звездой?", "chords": []}]},
+        {"words": [{"text": "Звездой,", "chords": [{"name": "D", "position": 0}]}, {"text": "звездой.", "chords": [{"name": "Em", "position": 0}]}]}
       ]
     },
     {
       "type": "chorus",
       "label": "Припев",
       "lines": [
-        {
-          "words": [
-            {"text": "Мой", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "ладонь", "chords": []},
-            {"text": "переросла", "chords": [{"name": "C", "position": 0}]},
-            {"text": "в", "chords": []},
-            {"text": "кулак", "chords": [{"name": "G", "position": 0}]}
-          ]
-        },
-        {
-          "words": [
-            {"text": "Если", "chords": [{"name": "F", "position": 0}]},
-            {"text": "есть", "chords": []},
-            {"text": "порох", "chords": []},
-            {"text": "—", "chords": []},
-            {"text": "дай", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "огня", "chords": []}
-          ]
-        }
+        {"words": [{"text": "Солнце", "chords": [{"name": "C", "position": 0}]}, {"text": "моё,", "chords": []}, {"text": "взгляни", "chords": [{"name": "G", "position": 0}]}, {"text": "на", "chords": []}, {"text": "меня,", "chords": [{"name": "D", "position": 0}]}]},
+        {"words": [{"text": "Моя", "chords": [{"name": "Em", "position": 0}]}, {"text": "ладонь", "chords": []}, {"text": "превратилась", "chords": [{"name": "C", "position": 0}]}, {"text": "в", "chords": []}, {"text": "кулак.", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "И", "chords": []}, {"text": "если", "chords": [{"name": "D", "position": 0}]}, {"text": "есть", "chords": []}, {"text": "порох,", "chords": [{"name": "Em", "position": 0}]}, {"text": "дай", "chords": []}, {"text": "огня.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Вот", "chords": [{"name": "G", "position": 0}]}, {"text": "так.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "Кто", "chords": [{"name": "Em", "position": 0}]}, {"text": "пойдёт", "chords": []}, {"text": "по", "chords": [{"name": "C", "position": 0}]}, {"text": "следу", "chords": []}, {"text": "одиноком?", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Сильные", "chords": [{"name": "D", "position": 0}]}, {"text": "да", "chords": []}, {"text": "смелые", "chords": [{"name": "Em", "position": 0}]}, {"text": "головы", "chords": []}, {"text": "сложили", "chords": []}, {"text": "в", "chords": []}, {"text": "поле,", "chords": []}, {"text": "в", "chords": []}, {"text": "бою.", "chords": []}]},
+        {"words": [{"text": "Мало", "chords": [{"name": "Em", "position": 0}]}, {"text": "кто", "chords": []}, {"text": "остался", "chords": [{"name": "C", "position": 0}]}, {"text": "в", "chords": []}, {"text": "светлой", "chords": [{"name": "G", "position": 0}]}, {"text": "памяти,", "chords": []}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "трезвом", "chords": [{"name": "D", "position": 0}]}, {"text": "уме", "chords": []}, {"text": "да", "chords": []}, {"text": "с", "chords": [{"name": "Em", "position": 0}]}, {"text": "твёрдой", "chords": []}, {"text": "рукой", "chords": []}, {"text": "в", "chords": []}, {"text": "строю.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Солнце", "chords": [{"name": "C", "position": 0}]}, {"text": "моё,", "chords": []}, {"text": "взгляни", "chords": [{"name": "G", "position": 0}]}, {"text": "на", "chords": []}, {"text": "меня,", "chords": [{"name": "D", "position": 0}]}]},
+        {"words": [{"text": "Моя", "chords": [{"name": "Em", "position": 0}]}, {"text": "ладонь", "chords": []}, {"text": "превратилась", "chords": [{"name": "C", "position": 0}]}, {"text": "в", "chords": []}, {"text": "кулак.", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "И", "chords": []}, {"text": "если", "chords": [{"name": "D", "position": 0}]}, {"text": "есть", "chords": []}, {"text": "порох,", "chords": [{"name": "Em", "position": 0}]}, {"text": "дай", "chords": []}, {"text": "огня.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Вот", "chords": [{"name": "G", "position": 0}]}, {"text": "так.", "chords": [{"name": "D", "position": 0}]}]}
       ]
     }
   ]

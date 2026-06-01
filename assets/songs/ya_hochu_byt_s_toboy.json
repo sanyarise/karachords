@@ -1,0 +1,47 @@
+{
+  "id": "ya_hochu_byt_s_toboy",
+  "title": "Я хочу быть с тобой",
+  "artist": "Наутилус Помпилиус",
+  "bpm": 100,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "Я", "chords": [{"name": "Am", "position": 0}]}, {"text": "пытался", "chords": []}, {"text": "уйти", "chords": [{"name": "G", "position": 0}]}, {"text": "от", "chords": []}, {"text": "любви.", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": [{"name": "C", "position": 0}]}, {"text": "брал", "chords": []}, {"text": "острую", "chords": [{"name": "G", "position": 0}]}, {"text": "бритву", "chords": []}, {"text": "и", "chords": []}, {"text": "правил", "chords": [{"name": "Am", "position": 0}]}, {"text": "себя.", "chords": []}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "укрывался", "chords": [{"name": "Am", "position": 0}]}, {"text": "в", "chords": []}, {"text": "подвале,", "chords": [{"name": "G", "position": 0}]}, {"text": "я", "chords": []}, {"text": "резал", "chords": [{"name": "F", "position": 0}]}, {"text": "кожу", "chords": []}, {"text": "с", "chords": []}, {"text": "себя.", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Но", "chords": []}, {"text": "в", "chords": [{"name": "Dm", "position": 0}]}, {"text": "этом", "chords": []}, {"text": "доме", "chords": []}, {"text": "я", "chords": [{"name": "Am", "position": 0}]}, {"text": "жить", "chords": []}, {"text": "не", "chords": [{"name": "E", "position": 0}]}, {"text": "могу.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Я", "chords": [{"name": "Am", "position": 0}]}, {"text": "хочу", "chords": []}, {"text": "быть", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": [{"name": "C", "position": 0}]}, {"text": "хочу", "chords": []}, {"text": "быть", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "так", "chords": [{"name": "Am", "position": 0}]}, {"text": "хочу", "chords": []}, {"text": "быть", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": [{"name": "Dm", "position": 0}]}, {"text": "хочу", "chords": [{"name": "Am", "position": 0}]}, {"text": "быть", "chords": [{"name": "E", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "Я", "chords": [{"name": "Am", "position": 0}]}, {"text": "читал", "chords": []}, {"text": "в", "chords": [{"name": "G", "position": 0}]}, {"text": "твоих", "chords": []}, {"text": "глазах", "chords": [{"name": "F", "position": 0}]}, {"text": "всё,", "chords": []}, {"text": "что", "chords": [{"name": "C", "position": 0}]}, {"text": "хотел", "chords": [{"name": "G", "position": 0}]}, {"text": "сказать.", "chords": []}]},
+        {"words": [{"text": "И", "chords": [{"name": "Am", "position": 0}]}, {"text": "твои", "chords": []}, {"text": "локоны", "chords": [{"name": "G", "position": 0}]}, {"text": ",", "chords": []}, {"text": "твои", "chords": [{"name": "F", "position": 0}]}, {"text": "губы", "chords": []}, {"text": "не", "chords": [{"name": "C", "position": 0}]}, {"text": "могут", "chords": [{"name": "G", "position": 0}]}, {"text": "лгать.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Я", "chords": [{"name": "Am", "position": 0}]}, {"text": "хочу", "chords": []}, {"text": "быть", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": [{"name": "C", "position": 0}]}, {"text": "хочу", "chords": []}, {"text": "быть", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "так", "chords": [{"name": "Am", "position": 0}]}, {"text": "хочу", "chords": []}, {"text": "быть", "chords": [{"name": "G", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": [{"name": "Dm", "position": 0}]}, {"text": "хочу", "chords": [{"name": "Am", "position": 0}]}, {"text": "быть", "chords": [{"name": "E", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тобой.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    }
+  ]
+}

@@ -2,41 +2,338 @@
   "id": "zvezda_po_imeni_solntse",
   "title": "Звезда по имени Солнце",
   "artist": "Кино",
-  "bpm": 95,
+  "bpm": 120,
   "isBuiltIn": true,
   "sections": [
+    {
+      "type": "intro",
+      "label": "Вступление",
+      "lines": [
+        {
+          "words": [
+            {
+              "text": "Am",
+              "chords": []
+            },
+            {
+              "text": "C",
+              "chords": []
+            },
+            {
+              "text": "Dm",
+              "chords": []
+            },
+            {
+              "text": "G",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Am",
+              "chords": []
+            },
+            {
+              "text": "C",
+              "chords": []
+            },
+            {
+              "text": "Dm",
+              "chords": []
+            },
+            {
+              "text": "G",
+              "chords": []
+            }
+          ]
+        }
+      ]
+    },
     {
       "type": "verse",
       "label": "Куплет 1",
       "lines": [
         {
           "words": [
-            {"text": "Белый", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "снег,", "chords": []},
-            {"text": "серый", "chords": [{"name": "C", "position": 0}]},
-            {"text": "лед,", "chords": []}
+            {
+              "text": "Белый",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "снег,",
+              "chords": []
+            },
+            {
+              "text": "серый",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "лёд,",
+              "chords": []
+            }
           ]
         },
         {
           "words": [
-            {"text": "На", "chords": [{"name": "G", "position": 0}]},
-            {"text": "растрескавшейся", "chords": []},
-            {"text": "земле." ,"chords": [{"name": "Dm", "position": 0}]}
+            {
+              "text": "На",
+              "chords": []
+            },
+            {
+              "text": "растрескавшейся",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "земле.",
+              "chords": []
+            }
           ]
         },
         {
           "words": [
-            {"text": "Одежда", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "в", "chords": []},
-            {"text": "дороге,", "chords": []}
-            {"text": "посылка", "chords": [{"name": "C", "position": 0}]}
+            {
+              "text": "Одеялом",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "лоскутным",
+              "chords": []
+            },
+            {
+              "text": "на",
+              "chords": []
+            },
+            {
+              "text": "ней",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            }
           ]
         },
         {
           "words": [
-            {"text": "Небольшая", "chords": [{"name": "G", "position": 0}]},
-            {"text": "колючая", "chords": []},
-            {"text": "звезда.", "chords": [{"name": "Dm", "position": 0}]}
+            {
+              "text": "Город",
+              "chords": []
+            },
+            {
+              "text": "в",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "дорожной",
+              "chords": []
+            },
+            {
+              "text": "петле.",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "А",
+              "chords": []
+            },
+            {
+              "text": "над",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "городом",
+              "chords": []
+            },
+            {
+              "text": "плывут",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "облака,",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Закрывая",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "небесный",
+              "chords": []
+            },
+            {
+              "text": "свет.",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "А",
+              "chords": []
+            },
+            {
+              "text": "над",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "городом",
+              "chords": []
+            },
+            {
+              "text": "жёлтый",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "дым,",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Городу",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "две",
+              "chords": []
+            },
+            {
+              "text": "тысячи",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "лет,",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Прожитых",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "под",
+              "chords": []
+            },
+            {
+              "text": "светом",
+              "chords": []
+            },
+            {
+              "text": "Звезды",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "По",
+              "chords": []
+            },
+            {
+              "text": "имени",
+              "chords": []
+            },
+            {
+              "text": "Солнце.",
+              "chords": []
+            }
           ]
         }
       ]
@@ -47,18 +344,698 @@
       "lines": [
         {
           "words": [
-            {"text": "Звезда", "chords": [{"name": "Am", "position": 0}]},
-            {"text": "по", "chords": []},
-            {"text": "имени", "chords": [{"name": "C", "position": 0}]},
-            {"text": "Солнце", "chords": []}
+            {
+              "text": "И",
+              "chords": []
+            },
+            {
+              "text": "две",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "тысячи",
+              "chords": []
+            },
+            {
+              "text": "лет",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "война,",
+              "chords": []
+            }
           ]
         },
         {
           "words": [
-            {"text": "Звезда", "chords": [{"name": "G", "position": 0}]},
-            {"text": "по", "chords": []},
-            {"text": "имени", "chords": []},
-            {"text": "Солнце", "chords": [{"name": "Dm", "position": 0}]}
+            {
+              "text": "Война",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "без",
+              "chords": []
+            },
+            {
+              "text": "особых",
+              "chords": []
+            },
+            {
+              "text": "причин.",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Война",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "дело",
+              "chords": []
+            },
+            {
+              "text": "молодых,",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Лекарство",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "против",
+              "chords": []
+            },
+            {
+              "text": "морщин.",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Красная,",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "красная",
+              "chords": []
+            },
+            {
+              "text": "кровь,",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Через",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "час",
+              "chords": []
+            },
+            {
+              "text": "уже",
+              "chords": []
+            },
+            {
+              "text": "просто",
+              "chords": []
+            },
+            {
+              "text": "земля,",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Через",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "два",
+              "chords": []
+            },
+            {
+              "text": "на",
+              "chords": []
+            },
+            {
+              "text": "ней",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "цветы",
+              "chords": []
+            },
+            {
+              "text": "и",
+              "chords": []
+            },
+            {
+              "text": "трава,",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Через",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "три",
+              "chords": []
+            },
+            {
+              "text": "она",
+              "chords": []
+            },
+            {
+              "text": "снова",
+              "chords": []
+            },
+            {
+              "text": "жива.",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {
+          "words": [
+            {
+              "text": "И",
+              "chords": []
+            },
+            {
+              "text": "кто",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "виноват",
+              "chords": []
+            },
+            {
+              "text": "в",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "том,",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Что",
+              "chords": []
+            },
+            {
+              "text": "есть",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "одиноко",
+              "chords": []
+            },
+            {
+              "text": "нам?",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "И",
+              "chords": []
+            },
+            {
+              "text": "можно",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "ли",
+              "chords": []
+            },
+            {
+              "text": "взять",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "и",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Сменить",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "судьбу",
+              "chords": []
+            },
+            {
+              "text": "свою?",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {
+          "words": [
+            {
+              "text": "И",
+              "chords": []
+            },
+            {
+              "text": "две",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "тысячи",
+              "chords": []
+            },
+            {
+              "text": "лет",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "война,",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Война",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "без",
+              "chords": []
+            },
+            {
+              "text": "особых",
+              "chords": []
+            },
+            {
+              "text": "причин.",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Война",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "дело",
+              "chords": []
+            },
+            {
+              "text": "молодых,",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Лекарство",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "против",
+              "chords": []
+            },
+            {
+              "text": "морщин.",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Красная,",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "красная",
+              "chords": []
+            },
+            {
+              "text": "кровь,",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Через",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "час",
+              "chords": []
+            },
+            {
+              "text": "уже",
+              "chords": []
+            },
+            {
+              "text": "просто",
+              "chords": []
+            },
+            {
+              "text": "земля,",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Через",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "два",
+              "chords": []
+            },
+            {
+              "text": "на",
+              "chords": []
+            },
+            {
+              "text": "ней",
+              "chords": [
+                {
+                  "name": "C",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "цветы",
+              "chords": []
+            },
+            {
+              "text": "и",
+              "chords": []
+            },
+            {
+              "text": "трава,",
+              "chords": [
+                {
+                  "name": "Dm",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Через",
+              "chords": [
+                {
+                  "name": "G",
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "text": "три",
+              "chords": []
+            },
+            {
+              "text": "она",
+              "chords": []
+            },
+            {
+              "text": "снова",
+              "chords": []
+            },
+            {
+              "text": "жива.",
+              "chords": [
+                {
+                  "name": "Am",
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bridge",
+      "label": "Соло",
+      "lines": [
+        {
+          "words": [
+            {
+              "text": "Am",
+              "chords": []
+            },
+            {
+              "text": "C",
+              "chords": []
+            },
+            {
+              "text": "Dm",
+              "chords": []
+            },
+            {
+              "text": "G",
+              "chords": []
+            }
+          ]
+        },
+        {
+          "words": [
+            {
+              "text": "Am",
+              "chords": []
+            },
+            {
+              "text": "C",
+              "chords": []
+            },
+            {
+              "text": "Dm",
+              "chords": []
+            },
+            {
+              "text": "G",
+              "chords": []
+            }
           ]
         }
       ]

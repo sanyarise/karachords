@@ -1,0 +1,49 @@
+{
+  "id": "poteryanniy_ray",
+  "title": "Потерянный рай",
+  "artist": "Ария",
+  "bpm": 140,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "От", "chords": [{"name": "Am", "position": 0}]}, {"text": "края", "chords": []}, {"text": "до", "chords": [{"name": "F", "position": 0}]}, {"text": "края,", "chords": []}]},
+        {"words": [{"text": "От", "chords": []}, {"text": "моря", "chords": [{"name": "C", "position": 0}]}, {"text": "до", "chords": [{"name": "G", "position": 0}]}, {"text": "моря,", "chords": []}]},
+        {"words": [{"text": "Кони", "chords": [{"name": "Am", "position": 0}]}, {"text": "в", "chords": []}, {"text": "мыле", "chords": [{"name": "F", "position": 0}]}, {"text": "летят.", "chords": []}]},
+        {"words": [{"text": "Кто", "chords": [{"name": "C", "position": 0}]}, {"text": "в", "chords": []}, {"text": "пути,", "chords": [{"name": "G", "position": 0}]}, {"text": "тот", "chords": []}, {"text": "не", "chords": [{"name": "Am", "position": 0}]}, {"text": "спит.", "chords": []}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Потерянный", "chords": [{"name": "Dm", "position": 0}]}, {"text": "рай,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Сгоревший", "chords": [{"name": "G", "position": 0}]}, {"text": "дотла", "chords": []}, {"text": "за", "chords": [{"name": "C", "position": 0}]}, {"text": "краткий", "chords": []}, {"text": "миг.", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Потерянный", "chords": [{"name": "Dm", "position": 0}]}, {"text": "рай,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Ты", "chords": []}, {"text": "сделал", "chords": [{"name": "G", "position": 0}]}, {"text": "шаг", "chords": []}, {"text": "в", "chords": [{"name": "C", "position": 0}]}, {"text": "тупик.", "chords": [{"name": "G", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "И", "chords": []}, {"text": "разбились", "chords": [{"name": "Am", "position": 0}]}, {"text": "зеркала,", "chords": [{"name": "F", "position": 0}]}]},
+        {"words": [{"text": "Разорвались", "chords": [{"name": "C", "position": 0}]}, {"text": "небеса.", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Ты", "chords": [{"name": "Am", "position": 0}]}, {"text": "смотришь", "chords": []}, {"text": "в", "chords": []}, {"text": "них,", "chords": [{"name": "F", "position": 0}]}, {"text": "как", "chords": []}, {"text": "в", "chords": []}, {"text": "глаза.", "chords": []}]},
+        {"words": [{"text": "Вернуть", "chords": [{"name": "C", "position": 0}]}, {"text": "назад", "chords": []}, {"text": "уже", "chords": [{"name": "G", "position": 0}]}, {"text": "нельзя.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Потерянный", "chords": [{"name": "Dm", "position": 0}]}, {"text": "рай,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Сгоревший", "chords": [{"name": "G", "position": 0}]}, {"text": "дотла", "chords": []}, {"text": "за", "chords": [{"name": "C", "position": 0}]}, {"text": "краткий", "chords": []}, {"text": "миг.", "chords": [{"name": "G", "position": 0}]}]},
+        {"words": [{"text": "Потерянный", "chords": [{"name": "Dm", "position": 0}]}, {"text": "рай,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Ты", "chords": []}, {"text": "сделал", "chords": [{"name": "G", "position": 0}]}, {"text": "шаг", "chords": []}, {"text": "в", "chords": [{"name": "C", "position": 0}]}, {"text": "тупик.", "chords": [{"name": "G", "position": 0}]}]}
+      ]
+    }
+  ]
+}

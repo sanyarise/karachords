@@ -1,0 +1,51 @@
+{
+  "id": "vyhoda_net",
+  "title": "Выхода нет",
+  "artist": "Сплин",
+  "bpm": 90,
+  "isBuiltIn": true,
+  "sections": [
+    {
+      "type": "verse",
+      "label": "Куплет 1",
+      "lines": [
+        {"words": [{"text": "Сколько", "chords": [{"name": "Am", "position": 0}]}, {"text": "лет", "chords": []}, {"text": "прошло,", "chords": [{"name": "C", "position": 0}]}, {"text": "всё", "chords": []}, {"text": "о", "chords": [{"name": "G", "position": 0}]}, {"text": "том", "chords": []}, {"text": "же", "chords": [{"name": "Dm", "position": 0}]}, {"text": "гудит", "chords": []}, {"text": "дождь.", "chords": []}]},
+        {"words": [{"text": "Сколько", "chords": [{"name": "Am", "position": 0}]}, {"text": "зим", "chords": []}, {"text": "прошло", "chords": [{"name": "C", "position": 0}]}, {"text": "и", "chords": []}, {"text": "лет", "chords": [{"name": "G", "position": 0}]}, {"text": "прошло", "chords": [{"name": "Dm", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тех", "chords": []}, {"text": "пор.", "chords": []}]},
+        {"words": [{"text": "Сколько", "chords": [{"name": "Am", "position": 0}]}, {"text": "воды", "chords": []}, {"text": "утекло,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Сколько", "chords": [{"name": "G", "position": 0}]}, {"text": "воды", "chords": []}, {"text": "утекло,", "chords": [{"name": "Dm", "position": 0}]}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "этом", "chords": [{"name": "F", "position": 0}]}, {"text": "мире", "chords": []}, {"text": "есть", "chords": [{"name": "Dm", "position": 0}]}, {"text": "только", "chords": []}, {"text": "ты", "chords": [{"name": "E", "position": 0}]}, {"text": "и", "chords": []}, {"text": "я.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Выхода", "chords": [{"name": "F", "position": 0}]}, {"text": "нет,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Выхода", "chords": [{"name": "G", "position": 0}]}, {"text": "нет,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Выхода", "chords": [{"name": "F", "position": 0}]}, {"text": "нет,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "поворачиваю", "chords": [{"name": "G", "position": 0}]}, {"text": "ключ.", "chords": [{"name": "Dm", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "verse",
+      "label": "Куплет 2",
+      "lines": [
+        {"words": [{"text": "Сколько", "chords": [{"name": "Am", "position": 0}]}, {"text": "лет", "chords": []}, {"text": "прошло,", "chords": [{"name": "C", "position": 0}]}, {"text": "всё", "chords": []}, {"text": "о", "chords": [{"name": "G", "position": 0}]}, {"text": "том", "chords": []}, {"text": "же", "chords": [{"name": "Dm", "position": 0}]}, {"text": "темно", "chords": []}, {"text": "в", "chords": []}, {"text": "окнах.", "chords": []}]},
+        {"words": [{"text": "Сколько", "chords": [{"name": "Am", "position": 0}]}, {"text": "зим", "chords": []}, {"text": "прошло", "chords": [{"name": "C", "position": 0}]}, {"text": "и", "chords": []}, {"text": "лет", "chords": [{"name": "G", "position": 0}]}, {"text": "прошло", "chords": [{"name": "Dm", "position": 0}]}, {"text": "с", "chords": []}, {"text": "тех", "chords": []}, {"text": "пор.", "chords": []}]},
+        {"words": [{"text": "Сколько", "chords": [{"name": "Am", "position": 0}]}, {"text": "воды", "chords": []}, {"text": "утекло,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Сколько", "chords": [{"name": "G", "position": 0}]}, {"text": "воды", "chords": []}, {"text": "утекло,", "chords": [{"name": "Dm", "position": 0}]}]},
+        {"words": [{"text": "В", "chords": []}, {"text": "этом", "chords": [{"name": "F", "position": 0}]}, {"text": "мире", "chords": []}, {"text": "есть", "chords": [{"name": "Dm", "position": 0}]}, {"text": "только", "chords": []}, {"text": "ты", "chords": [{"name": "E", "position": 0}]}, {"text": "и", "chords": []}, {"text": "я.", "chords": [{"name": "Am", "position": 0}]}]}
+      ]
+    },
+    {
+      "type": "chorus",
+      "label": "Припев",
+      "lines": [
+        {"words": [{"text": "Выхода", "chords": [{"name": "F", "position": 0}]}, {"text": "нет,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Выхода", "chords": [{"name": "G", "position": 0}]}, {"text": "нет,", "chords": [{"name": "Am", "position": 0}]}]},
+        {"words": [{"text": "Выхода", "chords": [{"name": "F", "position": 0}]}, {"text": "нет,", "chords": [{"name": "C", "position": 0}]}]},
+        {"words": [{"text": "Я", "chords": []}, {"text": "поворачиваю", "chords": [{"name": "G", "position": 0}]}, {"text": "ключ.", "chords": [{"name": "Dm", "position": 0}]}]}
+      ]
+    }
+  ]
+}
