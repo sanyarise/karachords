@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/home/sanrise/claude_projects/karachords/vosk_flutter_patched/android"
+    name=":vosk_flutter"
+    type="LIBRARY"
+    maven="org.vosk.vosk_flutter:vosk_flutter:1.0"
+    agpVersion="8.6.0"
+    buildFolder="build"
+    bootClassPath="/home/sanrise/android-sdk/platforms/android-34/android.jar:/home/sanrise/android-sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

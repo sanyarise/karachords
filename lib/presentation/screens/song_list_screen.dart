@@ -100,6 +100,10 @@ class _SongListScreenState extends ConsumerState<SongListScreen> {
     context.push('/add');
   }
 
+  void _onEditSong(Song song) {
+    context.push('/add', extra: song);
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(songListProvider);
@@ -216,6 +220,7 @@ class _SongListScreenState extends ConsumerState<SongListScreen> {
         return SongCard(
           song: song,
           onTap: () => _onTapSong(song),
+          onEdit: () => _onEditSong(song),
           confirmDismiss: (_) => _confirmDismiss(song),
           onDismissed: (_) => _onDismissed(song),
         );

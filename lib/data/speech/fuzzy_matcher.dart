@@ -1,3 +1,4 @@
+import '../../core/logging/app_logger.dart';
 import '../../domain/models/song.dart';
 
 /// Matches recognized speech text against song lyrics.
@@ -5,12 +6,111 @@ import '../../domain/models/song.dart';
 /// The matcher works on a flattened list of words extracted from a [Song]
 /// and searches within a sliding window around the [currentPosition].
 class FuzzyMatcher {
+  final AppLogger? _log;
+
+  FuzzyMatcher({this._log});
+
   static const int _defaultWindowSize = 25;
   static const int _defaultMaxDistance = 2;
   static const double _defaultMinConfidence = 0.4;
   static const int _driftThreshold = 10;
   static const int _driftMinMatchedWords = 3;
   static const int _maxSongSkip = 2;
+
+  static const int _defaultLineWindowSize = 10;
+  static const int _defaultLineMaxDistance = 5;
+  static const int _lineDriftThreshold = 5;
+  static const int _lineDriftMinMatchedWords = 2;
+
+  /// Finds the target line in [song] for the given [recognizedText].
+  ///
+  /// Returns the line index in the flattened line list, or `null` when no
+  /// confident match is found. Uses line-level matching which is more
+  /// forgiving than word-level — it needs only a few words from the
+  /// recognized text to match a line.
+  int? findLinePosition(
+    String recognizedText,
+    Song song,
+    int currentLinePosition, {
+    int windowSize = _defaultLineWindowSize,
+    int maxDistance = _defaultLineMaxDistance,
+    double minConfidence = _defaultMinConfidence,
+  }) {
+    final queryText = normalize(recognizedText);
+    _log?.i('[FuzzyMatcher] findLinePosition query="$queryText", currentLine=$currentLinePosition');
+    if (queryText.isEmpty) {
+      _log?.w('[FuzzyMatcher] findLinePosition: empty query');
+      return null;
+    }
+
+    final flatLines = song.flattenedLines;
+    _log?.i('[FuzzyMatcher] findLinePosition: totalLines=${flatLines.length}');
+    if (flatLines.isEmpty) {
+      _log?.w('[FuzzyMatcher] findLinePosition: empty song');
+      return null;
+    }
+
+    // Build normalized line texts.
+    final lineTexts = flatLines.map((entry) {
+      final words = entry.line.words
+          .map((w) => normalize(w.text))
+          .where((w) => w.isNotEmpty)
+          .join(' ');
+      return words;
+    }).toList();
+
+    final clampedCurrent = currentLinePosition.clamp(0, flatLines.length - 1);
+    final windowStart = (clampedCurrent - windowSize).clamp(0, flatLines.length);
+    final windowEnd = (clampedCurrent + windowSize + 1).clamp(0, flatLines.length);
+
+    if (windowStart >= windowEnd) {
+      _log?.w('[FuzzyMatcher] findLinePosition: invalid window');
+      return null;
+    }
+
+    _log?.i('[FuzzyMatcher] findLinePosition: line window $windowStart..$windowEnd');
+
+    int bestLine = -1;
+    int bestDistance = maxDistance + 1;
+
+    for (int i = windowStart; i < windowEnd; i++) {
+      final lineText = lineTexts[i];
+      if (lineText.isEmpty) continue;
+      final distance = levenshtein(queryText, lineText);
+      final maxLen = queryText.length > lineText.length
+          ? queryText.length
+          : lineText.length;
+      final confidence = maxLen == 0 ? 0.0 : 1.0 - (distance / maxLen);
+      _log?.i('[FuzzyMatcher] findLinePosition: line $i dist=$distance conf=${confidence.toStringAsFixed(2)} "$lineText"');
+      if (distance <= bestDistance && confidence >= minConfidence) {
+        bestDistance = distance;
+        bestLine = i;
+      }
+    }
+
+    if (bestLine < 0) {
+      _log?.w('[FuzzyMatcher] findLinePosition: no match in window');
+      return null;
+    }
+
+    // Reject backward matches.
+    if (bestLine < clampedCurrent) {
+      _log?.w('[FuzzyMatcher] findLinePosition: backward match rejected $bestLine < $clampedCurrent');
+      return null;
+    }
+
+    // If the match is far ahead, require stronger evidence.
+    final matchedWords = queryText.split(RegExp(r'\s+')).length;
+    if (bestLine > clampedCurrent + _lineDriftThreshold) {
+      if (matchedWords < _lineDriftMinMatchedWords) {
+        _log?.w('[FuzzyMatcher] findLinePosition: drift rejected matchedWords=$matchedWords < $_lineDriftMinMatchedWords');
+        return null;
+      }
+    }
+
+    _log?.i('[FuzzyMatcher] findLinePosition: returning line $bestLine');
+    return bestLine;
+  }
 
   /// Finds the best word position in [song] for the given [recognizedText].
   ///
@@ -25,16 +125,29 @@ class FuzzyMatcher {
     double minConfidence = _defaultMinConfidence,
   }) {
     final queryWords = _wordsFromText(recognizedText);
-    if (queryWords.isEmpty) return null;
+    _log?.i('[FuzzyMatcher] queryWords=$queryWords, currentPos=$currentPosition');
+    if (queryWords.isEmpty) {
+      _log?.w('[FuzzyMatcher] empty query');
+      return null;
+    }
 
-    final allWords = flattenSong(song);
-    if (allWords.isEmpty) return null;
+    final allWords = song.flattenedWords;
+    _log?.i('[FuzzyMatcher] allWords.length=${allWords.length}');
+    if (allWords.isEmpty) {
+      _log?.w('[FuzzyMatcher] empty song');
+      return null;
+    }
 
     final clampedCurrent = currentPosition.clamp(0, allWords.length - 1);
     final windowStart = (clampedCurrent - windowSize).clamp(0, allWords.length);
     final windowEnd = (clampedCurrent + windowSize).clamp(0, allWords.length);
 
-    if (windowStart >= windowEnd) return null;
+    if (windowStart >= windowEnd) {
+      _log?.w('[FuzzyMatcher] invalid window: $windowStart >= $windowEnd');
+      return null;
+    }
+
+    _log?.i('[FuzzyMatcher] window: $windowStart..$windowEnd');
 
     final matches = <_Match>{};
 
@@ -50,7 +163,10 @@ class FuzzyMatcher {
       }
     }
 
-    if (matches.isEmpty) return null;
+    if (matches.isEmpty) {
+      _log?.w('[FuzzyMatcher] no matches in window');
+      return null;
+    }
 
     // Sort by confidence descending, then by distance to currentPosition ascending.
     final sorted = matches.toList()
@@ -63,24 +179,35 @@ class FuzzyMatcher {
       });
 
     final best = sorted.first;
+    _log?.i('[FuzzyMatcher] best match: start=${best.startIndex}, words=${best.matchedWords}, conf=${best.confidence.toStringAsFixed(2)}');
+
+    // Reject backward matches — fuzzy matcher is for drift correction,
+    // not for resetting to the beginning of the song.
+    if (best.startIndex < clampedCurrent) {
+      _log?.w('[FuzzyMatcher] backward match rejected: start=${best.startIndex} < current=$clampedCurrent');
+      return null;
+    }
 
     // If the match is far ahead, require stronger evidence.
     if (best.startIndex > clampedCurrent + _driftThreshold) {
       if (best.matchedWords < _driftMinMatchedWords) {
+        _log?.w('[FuzzyMatcher] drift rejected: matchedWords=${best.matchedWords} < $_driftMinMatchedWords');
         return null;
       }
     }
 
     if (best.confidence < minConfidence) {
+      _log?.w('[FuzzyMatcher] confidence too low: ${best.confidence.toStringAsFixed(2)} < $minConfidence');
       return null;
     }
 
+    _log?.i('[FuzzyMatcher] returning ${best.startIndex}');
     return best.startIndex;
   }
 
   /// Normalizes text by lowercasing and removing punctuation.
   static String normalize(String text) {
-    return text.toLowerCase().replaceAll(RegExp(r"[^\w\s]"), '').trim();
+    return text.toLowerCase().replaceAll(RegExp(r'[^\p{L}\p{N}\s]', unicode: true), '').trim();
   }
 
   /// Flattens a [Song] into a list of normalized words.

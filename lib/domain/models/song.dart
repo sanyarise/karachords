@@ -1,3 +1,4 @@
+import 'line.dart';
 import 'section.dart';
 
 class Song {
@@ -8,7 +9,42 @@ class Song {
   final List<Section> sections;
   final bool isBuiltIn;
 
-  const Song({
+  List<String>? _flattenedWords;
+  List<({int sectionIndex, int lineIndex, Line line})>? _flattenedLines;
+
+  /// Lazily computed list of normalized words for fuzzy matching.
+  List<String> get flattenedWords {
+    if (_flattenedWords != null) return _flattenedWords!;
+    final words = <String>[];
+    for (final section in sections) {
+      for (final line in section.lines) {
+        for (final word in line.words) {
+          final normalized = word.text
+              .toLowerCase()
+              .replaceAll(RegExp(r'[^\p{L}\p{N}\s]', unicode: true), '')
+              .trim();
+          if (normalized.isNotEmpty) words.add(normalized);
+        }
+      }
+    }
+    _flattenedWords = words;
+    return words;
+  }
+
+  /// Lazily computed flat list of all lines with their section/line indices.
+  List<({int sectionIndex, int lineIndex, Line line})> get flattenedLines {
+    if (_flattenedLines != null) return _flattenedLines!;
+    final lines = <({int sectionIndex, int lineIndex, Line line})>[];
+    for (int s = 0; s < sections.length; s++) {
+      for (int l = 0; l < sections[s].lines.length; l++) {
+        lines.add((sectionIndex: s, lineIndex: l, line: sections[s].lines[l]));
+      }
+    }
+    _flattenedLines = lines;
+    return lines;
+  }
+
+  Song({
     required this.id,
     required this.title,
     required this.artist,

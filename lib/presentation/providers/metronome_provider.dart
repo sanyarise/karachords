@@ -2,17 +2,15 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/local/drift_database.dart';
 import '../../data/local/settings_dao.dart';
 import '../../data/repositories/settings_repository_impl.dart';
 import '../../domain/models/metronome_settings.dart';
 import '../../domain/repositories/settings_repository.dart';
 import '../../domain/services/metronome_sound_service.dart';
-
-final _metronomeDbProvider = Provider<AppDatabase>((ref) => AppDatabase());
+import 'providers.dart';
 
 final metronomeDaoProvider = Provider<SettingsDao>((ref) {
-  return SettingsDao(ref.watch(_metronomeDbProvider));
+  return SettingsDao(ref.watch(appDatabaseProvider));
 });
 
 final metronomeRepositoryProvider = Provider<SettingsRepository>((ref) {

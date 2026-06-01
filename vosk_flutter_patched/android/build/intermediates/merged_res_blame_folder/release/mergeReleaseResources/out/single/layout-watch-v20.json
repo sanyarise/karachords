@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/layout-watch-v20/abc_alert_dialog_button_bar_material.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/layout-watch-v20/abc_alert_dialog_title_material.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/layout-watch-v20/abc_alert_dialog_title_material.xml"
+    }
+]

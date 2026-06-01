@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_tint_spinner.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_tint_seek_thumb.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_color_highlight_material.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_tint_btn_checkable.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_btn_colored_text_material.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_tint_edittext.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_tint_default.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_tint_default.xml"
+    },
+    {
+        "merged": "org.vosk.vosk_flutter-release-29:/color-v23/abc_tint_switch_track.xml",
+        "source": "org.vosk.vosk_flutter-appcompat-1.6.1-1:/color-v23/abc_tint_switch_track.xml"
+    }
+]

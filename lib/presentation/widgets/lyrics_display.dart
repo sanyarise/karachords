@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import '../../domain/models/line.dart';
 import '../../domain/models/section.dart';
 import '../../domain/models/song_settings.dart';
+import '../../domain/models/word.dart';
 import '../theme/app_theme.dart';
 import '../theme/constants.dart';
+import 'chord_widget.dart';
 import 'highlight_state.dart';
 import 'word_widget.dart';
 
@@ -64,36 +66,39 @@ class _LyricsDisplayState extends State<LyricsDisplay> {
     }
   }
 
-  HighlightState _wordState(int sectionIdx, int lineIdx, int wordIdx) {
+  HighlightState _lineState(int sectionIdx, int lineIdx) {
     if (sectionIdx < widget.activeSectionIndex) {
       return HighlightState.inactive;
     }
     if (sectionIdx > widget.activeSectionIndex) {
       return HighlightState.pending;
     }
-    // Same section
     if (lineIdx < widget.activeLineIndex) {
       return HighlightState.inactive;
     }
     if (lineIdx > widget.activeLineIndex) {
       return HighlightState.pending;
     }
-    // Same line — for now all words on active line are active.
-    // In a real implementation this would be driven by word-level index.
     return HighlightState.active;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final List<Widget> children = [];
+  int _totalItemCount() {
+    int count = 0;
+    for (final section in widget.sections) {
+      count += 1 + section.lines.length; // header + lines
+    }
+    return count;
+  }
 
+  Widget _buildItem(BuildContext context, int index) {
+    int current = 0;
     for (int sIdx = 0; sIdx < widget.sections.length; sIdx++) {
       final section = widget.sections[sIdx];
 
       // Section header
-      final sectionLabel = section.label ?? _defaultSectionLabel(section.type);
-      children.add(
-        Padding(
+      if (index == current) {
+        final sectionLabel = section.label ?? _defaultSectionLabel(section.type);
+        return Padding(
           padding: const EdgeInsets.only(
             top: kSpaceLg,
             bottom: kSpaceSm,
@@ -106,66 +111,75 @@ class _LyricsDisplayState extends State<LyricsDisplay> {
               color: AppTheme.onSurface,
             ),
           ),
-        ),
-      );
+        );
+      }
+      current++;
 
       // Lines
       for (int lIdx = 0; lIdx < section.lines.length; lIdx++) {
-        final line = section.lines[lIdx];
-        final key = _lineKey(sIdx, lIdx);
-        _lineKeys.putIfAbsent(key, GlobalKey.new);
-
-        children.add(
-          _LineWidget(
+        if (index == current) {
+          final line = section.lines[lIdx];
+          final key = _lineKey(sIdx, lIdx);
+          _lineKeys.putIfAbsent(key, GlobalKey.new);
+          return _LineWidget(
             key: _lineKeys[key],
             line: line,
             settings: widget.settings,
-            wordStateBuilder: (wIdx) => _wordState(sIdx, lIdx, wIdx),
-          ),
-        );
+            lineState: _lineState(sIdx, lIdx),
+          );
+        }
+        current++;
       }
     }
+    return const SizedBox.shrink();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return ListView.builder(
       controller: _scrollController,
       padding: const EdgeInsets.symmetric(horizontal: kSpaceMd)
           .copyWith(bottom: 80),
-      itemCount: children.length,
-      itemBuilder: (context, index) => children[index],
+      itemCount: _totalItemCount(),
+      itemBuilder: _buildItem,
     );
   }
 
   String _defaultSectionLabel(SectionType type) {
     switch (type) {
       case SectionType.verse:
-        return 'Verse';
+        return 'Куплет';
       case SectionType.chorus:
-        return 'Chorus';
+        return 'Припев';
       case SectionType.bridge:
-        return 'Bridge';
+        return 'Бридж';
       case SectionType.intro:
-        return 'Intro';
+        return 'Вступление';
       case SectionType.outro:
-        return 'Outro';
+        return 'Концовка';
       case SectionType.preChorus:
-        return 'Pre-Chorus';
+        return 'Предприпев';
       case SectionType.other:
-        return 'Other';
+        return 'Другое';
     }
   }
 }
 
-/// A single line rendered as a [Wrap] of [WordWidget]s.
+/// A single line rendered as a [Wrap] of word+chord columns.
+///
+/// Each word is displayed as a mini-column: chord name on top, word text
+/// below. If a word has no chord, a spacer of equal height is shown to
+/// keep vertical alignment consistent across the line.
 class _LineWidget extends StatelessWidget {
   final Line line;
   final SongSettings settings;
-  final HighlightState Function(int wordIndex) wordStateBuilder;
+  final HighlightState lineState;
 
   const _LineWidget({
     super.key,
     required this.line,
     required this.settings,
-    required this.wordStateBuilder,
+    required this.lineState,
   });
 
   @override
@@ -175,15 +189,51 @@ class _LineWidget extends StatelessWidget {
       child: Wrap(
         spacing: kSpaceXs,
         runSpacing: kSpaceXs,
+        crossAxisAlignment: WrapCrossAlignment.end,
         children: [
-          for (int i = 0; i < line.words.length; i++)
-            WordWidget(
-              text: line.words[i].text,
-              state: wordStateBuilder(i),
-              settings: settings,
-            ),
+          for (final word in line.words) _WordWithChord(
+            word: word,
+            state: lineState,
+            settings: settings,
+          ),
         ],
       ),
+    );
+  }
+}
+
+/// A single word with its chord(s) rendered inline above it.
+class _WordWithChord extends StatelessWidget {
+  final Word word;
+  final HighlightState state;
+  final SongSettings settings;
+
+  const _WordWithChord({
+    required this.word,
+    required this.state,
+    required this.settings,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        if (word.chords.isNotEmpty)
+          ChordWidget(
+            chord: word.chords.first,
+            state: state,
+            settings: settings,
+          )
+        else
+          SizedBox(height: settings.chordsFontSize * 1.4),
+        WordWidget(
+          text: word.text,
+          state: state,
+          settings: settings,
+        ),
+      ],
     );
   }
 }

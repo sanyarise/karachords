@@ -3,16 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/local/drift_database.dart';
 import '../../data/local/settings_dao.dart';
 import '../../data/repositories/settings_repository_impl.dart';
 import '../../domain/models/song_settings.dart';
 import '../../domain/repositories/settings_repository.dart';
-
-final _dbProvider = Provider<AppDatabase>((ref) => AppDatabase());
+import 'providers.dart';
 
 final settingsDaoProvider = Provider<SettingsDao>((ref) {
-  return SettingsDao(ref.watch(_dbProvider));
+  return SettingsDao(ref.watch(appDatabaseProvider));
 });
 
 final settingsRepositoryProvider = Provider<SettingsRepository>((ref) {

@@ -4,6 +4,8 @@ import '../../data/local/drift_database.dart' hide Song;
 import '../../data/local/song_dao.dart';
 import '../../data/repositories/song_repository_impl.dart';
 import '../../data/speech/composite_recognizer.dart';
+import '../../data/speech/vosk_service.dart';
+import '../../data/speech/whisper_service.dart';
 import '../../domain/models/song.dart';
 import '../../domain/repositories/song_repository.dart';
 import '../../domain/repositories/speech_recognizer.dart';
@@ -20,6 +22,12 @@ final songRepositoryProvider = Provider<SongRepository>((ref) {
 
 final currentSongProvider = StateProvider<Song?>((ref) => null);
 
+final _voskServiceProvider = Provider<VoskService>((ref) => VoskService());
+final _whisperServiceProvider = Provider<WhisperService>((ref) => WhisperService());
+
 final speechRecognizerProvider = Provider<SpeechRecognizer>((ref) {
-  return CompositeSpeechRecognizer();
+  return CompositeSpeechRecognizer(
+    primary: ref.read(_voskServiceProvider),
+    fallback: ref.read(_whisperServiceProvider),
+  );
 });

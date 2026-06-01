@@ -21,4 +21,3 @@ const double kMinTouchTarget = 48.0;
 const double kFabSize = 56.0;
 const double kAppBarHeight = 56.0;
 const double kPlayerControlsHeight = 80.0;
-const double kChordDisplayHeight = 120.0;

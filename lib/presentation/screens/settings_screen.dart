@@ -122,6 +122,16 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: kSpaceLg),
             Center(
               child: TextButton(
+                onPressed: () => context.push('/logs'),
+                style: TextButton.styleFrom(
+                  foregroundColor: AppTheme.onSurface.withValues(alpha: 0.7),
+                ),
+                child: const Text('Логи отладки'),
+              ),
+            ),
+            const SizedBox(height: kSpaceMd),
+            Center(
+              child: TextButton(
                 onPressed: () => _showResetDialog(context, notifier),
                 style: TextButton.styleFrom(
                   foregroundColor: AppTheme.error,
@@ -416,16 +426,20 @@ class _ColorPickerField extends StatelessWidget {
           style: const TextStyle(fontSize: 12, color: AppTheme.onSurface),
         ),
         const SizedBox(height: kSpaceXs),
-        GestureDetector(
-          onTap: () => _showColorPicker(context),
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(kBorderRadiusSm),
-              border: Border.all(
-                color: AppTheme.onSurface.withValues(alpha: 0.3),
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () => _showColorPicker(context),
+            borderRadius: BorderRadius.circular(kBorderRadiusSm),
+            child: Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(kBorderRadiusSm),
+                border: Border.all(
+                  color: AppTheme.onSurface.withValues(alpha: 0.3),
+                ),
               ),
             ),
           ),
@@ -450,28 +464,30 @@ class _ColorPickerField extends StatelessWidget {
       builder: (context) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(kSpaceMd),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ColorPicker(
-                pickerColor: pickerColor,
-                onColorChanged: (c) => pickerColor = c,
-                enableAlpha: false,
-                displayThumbColor: true,
-                pickerAreaHeightPercent: 0.7,
-              ),
-              const SizedBox(height: kSpaceMd),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    onChanged(pickerColor);
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Готово'),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ColorPicker(
+                  pickerColor: pickerColor,
+                  onColorChanged: (c) => pickerColor = c,
+                  enableAlpha: false,
+                  displayThumbColor: true,
+                  pickerAreaHeightPercent: 0.7,
                 ),
-              ),
-            ],
+                const SizedBox(height: kSpaceMd),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      onChanged(pickerColor);
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Готово'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

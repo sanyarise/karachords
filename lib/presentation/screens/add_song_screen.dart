@@ -1,18 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/parsers/chordpro_parser.dart';
 import '../../data/parsers/plain_text_parser.dart';
+import '../../domain/models/song.dart';
 import '../providers/providers.dart';
+import '../providers/song_list_provider.dart';
 import '../theme/app_theme.dart';
 import '../theme/constants.dart';
 
 enum _SongFormat { chordPro, plainText }
 
 class AddSongScreen extends ConsumerStatefulWidget {
-  const AddSongScreen({super.key});
+  final Song? initialSong;
+
+  const AddSongScreen({super.key, this.initialSong});
 
   @override
   ConsumerState<AddSongScreen> createState() => _AddSongScreenState();
@@ -28,6 +35,10 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
 
   _SongFormat _format = _SongFormat.chordPro;
   bool _isDirty = false;
+  Timer? _draftSaveTimer;
+
+  static const String _draftKey = 'add_song_draft';
+  static const String _draftFormatKey = 'add_song_draft_format';
 
   @override
   void initState() {
@@ -36,6 +47,35 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
     _artistController.addListener(_markDirty);
     _bpmController.addListener(_markDirty);
     _textController.addListener(_markDirty);
+
+    final song = widget.initialSong;
+    if (song != null) {
+      _titleController.text = song.title;
+      _artistController.text = song.artist;
+      _bpmController.text = song.bpm?.toString() ?? '';
+      _textController.text = _reconstructText(song);
+    } else {
+      _loadDraft();
+    }
+  }
+
+  /// Reconstructs raw text from a parsed song for editing.
+  String _reconstructText(Song song) {
+    final buffer = StringBuffer();
+    for (final section in song.sections) {
+      for (final line in section.lines) {
+        for (final word in line.words) {
+          for (final chord in word.chords) {
+            buffer.write('[${chord.name}]');
+          }
+          buffer.write(word.text);
+          buffer.write(' ');
+        }
+        buffer.write('\n');
+      }
+      buffer.write('\n');
+    }
+    return buffer.toString().trim();
   }
 
   @override
@@ -49,6 +89,7 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
     _bpmController.dispose();
     _textController.dispose();
     _textFocusNode.dispose();
+    _draftSaveTimer?.cancel();
     super.dispose();
   }
 
@@ -56,6 +97,92 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
     if (!_isDirty) {
       setState(() => _isDirty = true);
     }
+    _scheduleDraftSave();
+  }
+
+  void _scheduleDraftSave() {
+    _draftSaveTimer?.cancel();
+    _draftSaveTimer = Timer(const Duration(seconds: 5), _saveDraft);
+  }
+
+  Future<void> _saveDraft() async {
+    if (!_isDirty) return;
+    final prefs = await SharedPreferences.getInstance();
+    final draft = {
+      'title': _titleController.text,
+      'artist': _artistController.text,
+      'bpm': _bpmController.text,
+      'text': _textController.text,
+      'format': _format.name,
+    };
+    await prefs.setString(_draftKey, draft.toString());
+    await prefs.setString(_draftFormatKey, _format.name);
+  }
+
+  Future<void> _loadDraft() async {
+    final prefs = await SharedPreferences.getInstance();
+    final draftJson = prefs.getString(_draftKey);
+    if (draftJson == null || draftJson.isEmpty) return;
+
+    final formatName = prefs.getString(_draftFormatKey);
+    final restoredFormat = formatName == _SongFormat.plainText.name
+        ? _SongFormat.plainText
+        : _SongFormat.chordPro;
+
+    if (!mounted) return;
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppTheme.surface,
+        title: const Text(
+          'Восстановить черновик?',
+          style: TextStyle(color: AppTheme.onSurface),
+        ),
+        content: const Text(
+          'Найден несохранённый черновик. Восстановить?',
+          style: TextStyle(color: AppTheme.textSecondary),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Нет'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: AppTheme.primary),
+            child: const Text('Восстановить'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true && mounted) {
+      // Simple parsing from toString() — stored as {key: value, ...}
+      final map = _parseDraft(draftJson);
+      setState(() {
+        _titleController.text = map['title'] ?? '';
+        _artistController.text = map['artist'] ?? '';
+        _bpmController.text = map['bpm'] ?? '';
+        _textController.text = map['text'] ?? '';
+        _format = restoredFormat;
+      });
+    }
+  }
+
+  Map<String, String> _parseDraft(String draftJson) {
+    final map = <String, String>{};
+    final regex = RegExp(r"'(\w+)':\s*'([^']*)'");
+    for (final match in regex.allMatches(draftJson)) {
+      map[match.group(1)!] = match.group(2)!;
+    }
+    return map;
+  }
+
+  Future<void> _clearDraft() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_draftKey);
+    await prefs.remove(_draftFormatKey);
   }
 
   String? _validateTitle(String? value) {
@@ -129,7 +256,10 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
     final artist = _artistController.text.trim();
     final bpmText = _bpmController.text.trim();
     final bpm = bpmText.isEmpty ? null : int.tryParse(bpmText);
-    final id = DateTime.now().millisecondsSinceEpoch.toString();
+    final isEditing = widget.initialSong != null;
+    final id = isEditing
+        ? widget.initialSong!.id
+        : DateTime.now().millisecondsSinceEpoch.toString();
 
     try {
       final parsed = _format == _SongFormat.chordPro
@@ -143,15 +273,17 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
       );
 
       await ref.read(songRepositoryProvider).saveSong(song);
+      ref.invalidate(songListProvider);
 
       if (!mounted) return;
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Песня добавлена')),
+        SnackBar(content: Text(isEditing ? 'Песня обновлена' : 'Песня добавлена')),
       );
 
       setState(() => _isDirty = false);
-      context.pop();
+      if (!isEditing) await _clearDraft();
+      if (mounted) context.pop();
     } catch (e) {
       if (!mounted) return;
 
@@ -322,9 +454,9 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
               }
             },
           ),
-          title: const Text(
-            'Добавить песню',
-            style: TextStyle(
+          title: Text(
+            widget.initialSong != null ? 'Редактировать песню' : 'Добавить песню',
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w500,
               color: AppTheme.onSurface,
@@ -379,7 +511,7 @@ class _AddSongScreenState extends ConsumerState<AddSongScreen> {
                       borderRadius: BorderRadius.circular(kBorderRadiusMd),
                     ),
                   ),
-                  child: const Text('Добавить песню'),
+                  child: Text(widget.initialSong != null ? 'Сохранить изменения' : 'Добавить песню'),
                 ),
                 const SizedBox(height: kSpace2xl),
               ],

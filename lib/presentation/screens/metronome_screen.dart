@@ -7,11 +7,35 @@ import '../providers/metronome_provider.dart';
 import '../theme/app_theme.dart';
 import '../theme/constants.dart';
 
-class MetronomeScreen extends ConsumerWidget {
+class MetronomeScreen extends ConsumerStatefulWidget {
   const MetronomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MetronomeScreen> createState() => _MetronomeScreenState();
+}
+
+class _MetronomeScreenState extends ConsumerState<MetronomeScreen> {
+  final List<DateTime> _taps = [];
+
+  void _onTapTempo() {
+    final now = DateTime.now();
+    _taps.add(now);
+    // Keep only taps within the last 2 seconds.
+    _taps.removeWhere((t) => now.difference(t).inSeconds > 2);
+    if (_taps.length >= 2) {
+      // Average interval between taps.
+      int totalMs = 0;
+      for (int i = 1; i < _taps.length; i++) {
+        totalMs += _taps[i].difference(_taps[i - 1]).inMilliseconds;
+      }
+      final avgInterval = totalMs / (_taps.length - 1);
+      final bpm = (60000 / avgInterval).round().clamp(40, 208);
+      ref.read(metronomeProvider.notifier).setBpm(bpm);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final settings = ref.watch(metronomeProvider);
     final notifier = ref.read(metronomeProvider.notifier);
 
@@ -30,6 +54,42 @@ class MetronomeScreen extends ConsumerWidget {
           child: Column(
             children: [
               const SizedBox(height: kSpaceXl),
+              // Tap tempo area
+              GestureDetector(
+                onTap: _onTapTempo,
+                child: Container(
+                  width: double.infinity,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    color: AppTheme.surface,
+                    borderRadius: BorderRadius.circular(kBorderRadiusLg),
+                    border: Border.all(
+                      color: AppTheme.primary.withValues(alpha: 0.3),
+                      width: 2,
+                    ),
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.touch_app,
+                        size: 32,
+                        color: AppTheme.primary.withValues(alpha: 0.7),
+                      ),
+                      const SizedBox(height: kSpaceSm),
+                      Text(
+                        'Тапайте в ритм',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppTheme.primary.withValues(alpha: 0.7),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: kSpaceLg),
               // Pulse indicator (visible only when playing)
               SizedBox(
                 height: 40,

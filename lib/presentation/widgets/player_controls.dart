@@ -8,17 +8,23 @@ import '../theme/constants.dart';
 class PlayerControls extends StatelessWidget {
   final bool isListening;
   final bool isSilent;
+  final bool isInitializing;
   final VoidCallback? onPlay;
   final VoidCallback? onStop;
   final VoidCallback? onResume;
+  final VoidCallback? onForward;
+  final VoidCallback? onBack;
 
   const PlayerControls({
     super.key,
     this.isListening = false,
     this.isSilent = false,
+    this.isInitializing = false,
     this.onPlay,
     this.onStop,
     this.onResume,
+    this.onForward,
+    this.onBack,
   });
 
   @override
@@ -43,7 +49,32 @@ class PlayerControls extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (isListening && !isSilent) ...[
+            IconButton(
+              onPressed: onBack,
+              icon: const Icon(Icons.skip_previous, color: AppTheme.onSurface),
+              iconSize: 28,
+              tooltip: 'Назад',
+            ),
+            const SizedBox(width: kSpaceSm),
+            if (isInitializing) ...[
+              const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.5,
+                  valueColor: AlwaysStoppedAnimation(AppTheme.secondary),
+                ),
+              ),
+              const SizedBox(width: kSpaceMd),
+              Text(
+                'Загрузка модели...',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppTheme.onSurface.withValues(alpha: 0.8),
+                ),
+              ),
+            ] else if (isListening && !isSilent) ...[
               const _PulseIndicator(),
               const SizedBox(width: kSpaceMd),
               Text(
@@ -138,6 +169,13 @@ class PlayerControls extends StatelessWidget {
                 ),
               ),
             ],
+            const SizedBox(width: kSpaceSm),
+            IconButton(
+              onPressed: onForward,
+              icon: const Icon(Icons.skip_next, color: AppTheme.onSurface),
+              iconSize: 28,
+              tooltip: 'Вперёд',
+            ),
           ],
         ),
       ),

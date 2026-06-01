@@ -11,6 +11,7 @@ import '../theme/constants.dart';
 class SongCard extends StatelessWidget {
   final Song song;
   final VoidCallback? onTap;
+  final VoidCallback? onEdit;
   final VoidCallback? onDelete;
   final Future<bool> Function(DismissDirection)? confirmDismiss;
   final void Function(DismissDirection)? onDismissed;
@@ -19,6 +20,7 @@ class SongCard extends StatelessWidget {
     super.key,
     required this.song,
     this.onTap,
+    this.onEdit,
     this.onDelete,
     this.confirmDismiss,
     this.onDismissed,
@@ -91,10 +93,31 @@ class SongCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Icon(
-                  Icons.more_vert,
-                  size: 24,
-                  color: AppTheme.textSecondary,
+                PopupMenuButton<void>(
+                  icon: const Icon(Icons.more_vert, color: AppTheme.textSecondary),
+                  color: AppTheme.surface,
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      child: const Row(
+                        children: [
+                          Icon(Icons.edit, color: AppTheme.onSurface, size: 20),
+                          SizedBox(width: kSpaceSm),
+                          Text('Редактировать'),
+                        ],
+                      ),
+                      onTap: () => onEdit?.call(),
+                    ),
+                    PopupMenuItem(
+                      child: const Row(
+                        children: [
+                          Icon(Icons.delete, color: AppTheme.error, size: 20),
+                          SizedBox(width: kSpaceSm),
+                          Text('Удалить', style: TextStyle(color: AppTheme.error)),
+                        ],
+                      ),
+                      onTap: () => onDelete?.call(),
+                    ),
+                  ],
                 ),
               ],
             ),
